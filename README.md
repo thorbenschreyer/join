@@ -48,7 +48,7 @@ This project was developed as part of the Developer Akademie curriculum to stren
 ### Clone Repository
 
 ```bash
-git clone https://github.com/your-username/join.git
+git clone https://github.com/thorbenschreyer/join.git
 ```
 
 ### Navigate to Project Directory
@@ -62,19 +62,6 @@ cd join
 ```bash
 npm install
 ```
-
-### Start Development Server
-
-```bash
-ng serve
-```
-
-Open your browser and navigate to:
-
-```text
-http://localhost:4200
-```
-
 ## Project Structure
 
 ```text
