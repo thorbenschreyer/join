@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <!-- GENERAL -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles/add_task_base.css">
+    <link rel="stylesheet" href="./styles/add_task_components.css">
+    <link rel="stylesheet" href="./styles/add_task_footer_responsive.css">
+    <link rel="stylesheet" href="./styles/board.css" />
+    <link rel="stylesheet" href="./styles/contacts.css" />
+    <link rel="stylesheet" href="./styles/contacts_mobile.css">
+    <link rel="stylesheet" href="./styles/login.css" />
+    <link rel="stylesheet" href="./styles/summary.css" />
+    <link rel="stylesheet" href="./styles/summary_mobile.css" />
+    <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/footerpage.css" />
+    <link rel="stylesheet" href="./styles/login_resp.css">
+    <link rel="stylesheet" href="./styles/contact_dialog.css">
+    <link rel="stylesheet" href="./styles/contact_dialog_mobile.css">
+    <link rel="stylesheet" href="./styles/add_task_dialog.css">
+    <link rel="stylesheet" href="./styles/task_dialog.css">
+    <link rel="stylesheet" href="./styles/edit_task.css">
+    <link rel="stylesheet" href="./styles/board_resp.css">
+    <link rel="stylesheet" href="style.css"/>
+    <!-- for drag and drop with touch display -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mobile-drag-drop@2.3.0-rc.2/default.css">
+    <script src="https://cdn.jsdelivr.net/npm/mobile-drag-drop@2.3.0-rc.2/index.min.js"></script>
+    <!-- SCRIPTS -->
+    <script src="./scripts/edit_task.js"></script>
+    <script src="./scripts/daily_renew.js"></script>
+    <script src="./scripts/add_tasks_listeners.js"></script>
+    <script src="./scripts/add_tasks.js"></script>
+    <script src="./scripts/board.js"></script>
+    <script src="./scripts/board_firebase.js"></script>
+    <script src="./scripts/board_edit_task.js"></script>
+    <script src="./scripts/board_add_task.js"></script>
+    <script src="./scripts/board_task_dialog.js"></script>
+    <script src="./scripts/contacts.js"></script>
+    <script src="./scripts/contact_dialog.js"></script>
+    <script src="./scripts/login.js"></script>
+    <script src="./scripts/drag_and_drop.js"></script>
+    <script src="./scripts/summary.js"></script>
+    <script src="./scripts/navigation_templates.js"></script>
+    <script src="./scripts/board_template.js"></script>
+    <script src="./scripts/add_tasks_template.js"></script>
+    <script src="./scripts/helper.js"></script>
+    <script src="script.js"></script>
+    <title>Join Kanban</title>
+  </head>
+  <body onload="init(), sortTodoforDate(), checkIfToday()">
+    <div class="all-content-area" id="all-content-area"></div>
+  </body>
+</html>

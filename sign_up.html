@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+
+        <!-- FAVICONS -->
+        <link rel="icon" type="image/png" href="./assets/icons/favicon.png">
+
+        <!-- AUTOREN-STYLESHEET -->
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" type="text/css" href="./styles/sign_up.css">
+        <link rel="stylesheet" type="text/css" href="./styles/sign_up_mobile.css">
+       
+    </head>
+
+    <body>
+
+        <!-- HEADER -->
+        <header class="signup-header">
+
+            <!-- HEADER LOGO -->
+            <img class="logo" src="./assets/icons/main_logo_dark.png" alt="Join Logo">
+
+        </header>
+
+        <!-- MAIN -->
+        <main class="signup">
+
+            <!-- SIGNUP CARD -->
+            <section class="signup-card">
+
+                <!-- HEADER IM FORMULAR -->
+                 <div class="signup-form-header">
+                    <a href="login.html" id="signup-back-button" class="signup-back" aria-label="Back to login">
+                        <!-- arrow icon generated via CSS -->
+                    </a>
+                    <h1>Sign up</h1>
+                </div>
+
+                <!-- FORMULAR -->
+                <form id="signup-form" class="signup-form" onsubmit="addUser(); return false;" novalidate>
+                    <div class="input-wrapper">
+                        <input id="name-register" type="text" placeholder="Name" aria-label="Name" required>
+                        <img class="input-icon" src="./assets/icons/person.png" alt="Person icon">
+                    </div>
+                    <div class="input-wrapper">
+                        <input id="email-register" type="email" placeholder="Email" aria-label="Email" required>
+                        <img class="input-icon" src="./assets/icons/mail.png" alt="Envelope icon">
+                    </div>
+                    <div class="input-wrapper">
+                        <input id="password-register" type="password" placeholder="Password" aria-label="Password" required>
+                        <img id="password-lock" class="input-icon" src="./assets/icons/lock.png" alt="Padlock icon">
+                        <button type="button" id="password-visibility-on" class="visibility-btn input-icon input-icon-visibility dNone" aria-label="show password"
+                         onclick="togglePasswordVisibility('password-visibility-on')">
+                            <img src="./assets/icons/visibility_on.png" alt="Eye icon">
+                        </button>
+                        <button type="button" id="password-visibility-off" class="visibility-btn input-icon input-icon-visibility dNone" aria-label="hide password"
+                         onclick="togglePasswordVisibility('password-visibility-off')">
+                            <img src="./assets/icons/visibility_off.png" alt="Crossed-out eye icon">
+                        </button>
+                    </div>
+                    <div class="input-wrapper">
+                        <input id="confirm-password-register" type="password" placeholder="Confirm Password" aria-label="Confirm Password" required>
+                        <span id="input-error" class="input-error"></span>
+                        <img id="confirm-password-lock" class="input-icon" src="./assets/icons/lock.png" alt="Padlock icon">
+                        <button type="button" id="confirm-password-visibility-on" class="visibility-btn input-icon input-icon-visibility dNone" aria-label="show confirm password"
+                         onclick="toggleConfirmPasswordVisibility('confirm-password-visibility-on')">
+                            <img src="./assets/icons/visibility_on.png" alt="Eye icon">
+                        </button>
+                        <button type="button" id="confirm-password-visibility-off" class="visibility-btn input-icon input-icon-visibility dNone" aria-label="hide confirm password"
+                         onclick="toggleConfirmPasswordVisibility('confirm-password-visibility-off')">
+                            <img src="./assets/icons/visibility_off.png" alt="Crossed-out eye icon">
+                        </button>
+                    </div>
+                <!-- FOOTER IM FORMULAR -->
+                    <div class="signup-form-footer">
+                        <label>
+                            <div class="privacy-policy-wrapper">
+                                <input id="privacy-policy-checkbox" type="checkbox" required/>
+                                <span>
+                                    I accept the <a href="index.html?page=privacy" id="privacy-policy-checkbox-link">Privacy policy</a>
+                                </span>
+                            </div>
+                        </label>
+                        <div id="signup-button-wrapper" class="signup-button-wrapper">
+                            <button id="signup-button" class="signup-button disabled-btn" type="submit" formnovalidate disabled>
+                                Sign up
+                            </button>
+                        </div>
+                        <div id="signup-button-hint" class="input-error">
+                            <span class="hint-line"></span>
+                            <span class="hint-line"></span>
+                        </div>
+                    </div>
+                </form>
+
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="signup-footer">
+            
+            <!-- FOOTER LINKS --> 
+            <a href="index.html?page=privacy" id="privacy-policy-footer" data-text="Privacy Policy">Privacy Policy</a>
+            <a href="index.html?page=legal" id="legal-notice-footer" data-text="Legal notice">Legal Notice</a>
+
+        </footer>
+
+        <!-- TOAST -->
+        <div id="signup-success-overlay" class="signup-success-overlay"></div>
+        <div id="signup-success-toast" class="signup-success-toast">
+            You signed up successfully
+        </div>
+        
+         <!-- AUTOREN-JAVASCRIPT -->
+        <script src="./script.js" defer></script>
+        <script src="./scripts/sign_up.js" defer></script>
+        <script src="./scripts/sign_up_listeners.js" defer></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --bg-color: #F6F7F8;
+  --logo-dark-blue: rgba(42, 54, 71, 1);
+  --logo-light-blue: rgba(41, 171, 226, 1);
+  --light-gray: #D1D1D1;
+  --black: #000000;
+  --white: #FFFFFF;
+  --red: #E60026;
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.dNone {
+  display: none;
+}
