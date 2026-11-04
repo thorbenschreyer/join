@@ -8,8 +8,9 @@
         <link rel="stylesheet" href="styles/login.css">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="styles/login_resp.css">
+        <link rel="stylesheet" href="styles/request.css">
     </head>
-    <body class="login-body" onload="getUserData()">
+    <body class="login-body" onload="getUserData(), openDialog()">
         <header class="login-header">
             <img src="assets/icons/main_logo_dark.png" class="static-header-logo" alt="Join Logo">
             <div id="signup-content-header" class="signup-content desktop-only">
@@ -62,6 +63,17 @@
     </body>
     <script src="scripts/login.js" defer></script>
     <script src="script.js" defer></script>
+
+    <dialog id="request-dialog">
+        <div class="start-img-container">
+            <img src="assets/icons/main_logo_dark.png" class="start-img" alt="Join Logo">
+        </div>
+        
+
+
+
+
+    </dialog>
 </html>
 
 

@@ -3,6 +3,7 @@ const fireBaseUrl =
 const emailData = document.getElementById("email-input-login");
 const passwordData = document.getElementById("password-input-login");
 const inputImg = document.getElementById("input-password-img");
+const dialog = document.getElementById("request-dialog");
 let initialViewportHeight = window.visualViewport.height;
 
 let wasEmpty = true;
@@ -184,6 +185,14 @@ async function getUserData() {
 function sortContacts(contacts) {
   contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
+
+/**
+ * Dialogmanagement
+ */
+function openDialog() {
+  dialog.showModal()
+}
+
 
 userColor = [
   "rgba(255, 122, 0, 1)",
