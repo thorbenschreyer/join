@@ -115,7 +115,7 @@ body {
     width: 100%;
     color: rgba(42, 54, 71, 1);
     font-family: "Open-Snas", sans-serif;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 
 .choose-section {
@@ -127,7 +127,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     font-size: 23px;
     color: rgba(42, 54, 71, 1);
     font-family: "Open-Snas", sans-serif;
@@ -137,4 +137,29 @@ body {
     margin-right: 8px;
     width: 24px;
     height: 24px;
+}
+
+button{
+    background: none;
+    border: none;
+}
+
+.request-button {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(23, 125, 168, 1);
+    font-size: 23px;
+    font-family: "Open-Sans-Light", sans-serif;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+}
+
+.member-button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(42, 54, 71, 1);
+    font-size: 23px;
+    font-family: "Open-Sans-Light", sans-serif;
+    cursor: pointer;
 }
