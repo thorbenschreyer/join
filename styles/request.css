@@ -75,8 +75,13 @@ body {
 
 .dialog-footer {
     position: fixed;
+    display: flex;
+    gap: 32px;
     bottom: 35px;
-    width: 100px;
-    height: 20px;
-    background-color: aqua;
+}
+
+.footer-content {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
 }
