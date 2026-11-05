@@ -71,6 +71,10 @@ body {
 }
 
 .welcome-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   width: 780px;
   height: 400px;
   background-color: rgb(255, 255, 255);
@@ -89,4 +93,25 @@ body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   color: rgba(255, 255, 255, 1);
+}
+
+.welcome-card-h1 {
+    font-size: 32px;
+    color: rgba(42, 54, 71, 1);
+}
+
+.welcome-card-hr {
+    width: 120px;
+    height: 1px;
+    border: 1px solid rgba(23, 125, 168, 1);;
+    
+}
+
+.welcome-card-text {
+
+}
+
+.choose-section {
+    display: flex;
+    gap: 32px
 }
