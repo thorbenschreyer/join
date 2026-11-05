@@ -193,6 +193,10 @@ function openDialog() {
   dialog.showModal()
 }
 
+function closeDialog() {
+  dialog.close();
+}
+
 
 userColor = [
   "rgba(255, 122, 0, 1)",
