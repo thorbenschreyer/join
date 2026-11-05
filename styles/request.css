@@ -103,15 +103,38 @@ body {
 .welcome-card-hr {
     width: 120px;
     height: 1px;
-    border: 1px solid rgba(23, 125, 168, 1);;
+    border: 1px solid rgba(23, 125, 168, 1);
+    margin: 16px 0px 32px 0px;
     
 }
 
 .welcome-card-text {
-
+    font-size: 23px;
+    font-weight: 400;
+    max-width: 645px;
+    width: 100%;
+    color: rgba(42, 54, 71, 1);
+    font-family: "Open-Snas", sans-serif;
+    margin-bottom: 32px;
 }
 
 .choose-section {
     display: flex;
     gap: 32px
+}
+
+.welcome-card-choose-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 23px;
+    color: rgba(42, 54, 71, 1);
+    font-family: "Open-Snas", sans-serif;
+}
+
+.welcome-card-choose-img {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
 }
