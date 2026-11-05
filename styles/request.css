@@ -263,6 +263,14 @@ button {
     color: rgba(42, 54, 71, 1);
 }
 
+.number-of-requests-ok {
+    color: rgba(23, 125, 168, 1);
+}
+
+.number-of-requests-not-ok {
+    color: rgba(255, 61, 0, 1);
+}
+
 .request-error {
     font-family: "Inter", sans-serif;
     display: flex;
