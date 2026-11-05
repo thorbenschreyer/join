@@ -1,4 +1,7 @@
 dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   inset: 0;
 
@@ -19,12 +22,10 @@ dialog {
 body {
   margin: 0;
   padding: 0;
-}£
-
-dialog::backdrop {
+}
+£ dialog::backdrop {
   background: transparent;
 }
-
 
 .start-img {
   width: 500px;
@@ -44,7 +45,7 @@ dialog::backdrop {
   background-color: white;
   z-index: 9999;
 
-  animation: fadeOut 1.0s ease-in-out forwards;
+  animation: fadeOut 1s ease-in-out forwards;
 }
 
 @keyframes fadeOut {
@@ -62,4 +63,20 @@ dialog::backdrop {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+.welcome-card {
+  width: 780px;
+  height: 400px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  box-shadow: 0 0 10 3;
+}
+
+.dialog-footer {
+    position: fixed;
+    bottom: 35px;
+    width: 100px;
+    height: 20px;
+    background-color: aqua;
 }
