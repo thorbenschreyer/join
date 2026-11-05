@@ -5,14 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
     <title>Join Kanban</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="styles/request.css"/>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/request.css" />
   </head>
-    <body class="login-body" onload="(getUserData(), openDialog())">
+  <body class="login-body" onload="(getUserData(), openDialog())">
+    <div class="request-page">
+      <img src="" alt="" />
 
+      <div class="welcome-container-card">
+        <header>
+          <img src="" alt="" />
+          <p><b>0</b> of <b>10</b> requests used today</p>
+        </header>
 
+        <h1>Welcome</h1>
 
-    </body>
+        <div class="how-to-text">
+          <div>
+            <h2>
+              Easily create a ticket by sending a request — no extra steps
+              needed.
+            </h2>
+            <p>
+              On this platform, you can submit your feature requests via a
+              request form. Our AI system will automatically generate a ticket
+              with a deadline and priority level.
+            </p>
+            <p>
+              A total of 10 requests can be created per day. After this limit,
+              request can still be sent, but they will be manually reviewed by
+              our team instead of generating AI tickets.
+            </p>
+          </div>
+
+          <img src="" alt="" />
+        </div>
+
+        <button>Create request <img src="" alt="" /></button>
+      </div>
+
+      <div class="dialog-footer">
+        <a
+          onclick="noLoginToShow()"
+          id="privacy-policy-link"
+          class="privacy-and-legal-links"
+          href="index.html?page=privacy"
+          >Privacy Policy</a
+        >
+        <a
+          id="legal-notice-link"
+          class="privacy-and-legal-links"
+          href="index.html?page=legal"
+          >Legal notice</a
+        >
+      </div>
+    </div>
+  </body>
   <script src="scripts/login.js" defer></script>
+  <script src="scripts/request.js" defer></script>
   <script src="script.js" defer></script>
 </html>

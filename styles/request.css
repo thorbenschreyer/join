@@ -163,3 +163,11 @@ button{
     font-family: "Open-Sans-Light", sans-serif;
     cursor: pointer;
 }
+
+.request-page {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    max-width: 964px;
+    width: 100%;
+}
