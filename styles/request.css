@@ -71,10 +71,10 @@ body {
 }
 
 .welcome-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 780px;
   height: 400px;
   background-color: rgb(255, 255, 255);
@@ -96,96 +96,138 @@ body {
 }
 
 .welcome-card-h1 {
-    font-size: 32px;
-    color: rgba(42, 54, 71, 1);
+  font-size: 32px;
+  color: rgba(42, 54, 71, 1);
 }
 
 .welcome-card-hr {
-    width: 120px;
-    height: 1px;
-    border: 1px solid rgba(23, 125, 168, 1);
-    margin: 16px 0px 32px 0px;
-    
+  width: 120px;
+  height: 1px;
+  border: 1px solid rgba(23, 125, 168, 1);
+  margin: 16px 0px 32px 0px;
 }
 
 .welcome-card-text {
-    font-size: 23px;
-    font-weight: 400;
-    max-width: 645px;
-    width: 100%;
-    color: rgba(42, 54, 71, 1);
-    font-family: "Open-Snas", sans-serif;
-    margin-bottom: 40px;
+  font-size: 23px;
+  font-weight: 400;
+  max-width: 645px;
+  width: 100%;
+  color: rgba(42, 54, 71, 1);
+  font-family: "Open-Snas", sans-serif;
+  margin-bottom: 40px;
 }
 
 .choose-section {
-    display: flex;
-    gap: 32px
+  display: flex;
+  gap: 32px;
 }
 
 .welcome-card-choose-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 24px;
-    font-size: 23px;
-    color: rgba(42, 54, 71, 1);
-    font-family: "Open-Snas", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 23px;
+  color: rgba(42, 54, 71, 1);
+  font-family: "Open-Snas", sans-serif;
 }
 
 .welcome-card-choose-img {
-    margin-right: 8px;
-    width: 24px;
-    height: 24px;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
 }
 
-button{
-    background: none;
-    border: none;
+button {
+  background: none;
+  border: none;
 }
 
 .request-button {
-    padding: 10px;
-    border-radius: 8px;
-    background-color: rgba(23, 125, 168, 1);
-    font-size: 23px;
-    font-family: "Open-Sans-Light", sans-serif;
-    font-weight: 400;
-    color: white;
-    cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(23, 125, 168, 1);
+  font-size: 23px;
+  font-family: "Open-Sans-Light", sans-serif;
+  font-weight: 400;
+  color: white;
+  cursor: pointer;
 }
 
 .member-button {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(42, 54, 71, 1);
-    font-size: 23px;
-    font-family: "Open-Sans-Light", sans-serif;
-    cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(42, 54, 71, 1);
+  font-size: 23px;
+  font-family: "Open-Sans-Light", sans-serif;
+  cursor: pointer;
 }
 
 .request-page {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    max-width: 964px;
-    width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  max-width: 1120px;
+  width: 100%;
 }
 
 .main-logo-request-page {
-    height: 56px;
-    width: 48px;
-    margin: 16px;
+  height: 56px;
+  width: 48px;
+  margin: 16px;
+}
+
+.welcome-container-card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  max-width: 1120px;
+  width: 100%;
 }
 
 .request-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 48px;
 }
 
 .request-header-img {
-    width: 21px;
-    height: auto;
-    cursor: pointer;
+  width: 21px;
+  height: auto;
+  cursor: pointer;
+}
+
+.request-h1 {
+  display: flex;
+  justify-content: center;
+  font-family: "Open-Sans-Bold", sans-serif;
+  color: rgba(42, 54, 71, 1);
+  font-size: 64;
+  font-weight: bold;
+  width: 100%;
+}
+
+.how-to-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 960px;
+  width: 100%;
+}
+
+.how-to-text {
+    display: flex;
+}
+
+.create-request-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 224px;
+}
+
+.create-request-img {
+  margin-left: 12px;
 }

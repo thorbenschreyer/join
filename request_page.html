@@ -11,38 +11,48 @@
     <link rel="stylesheet" href="styles/login_resp.css" />
   </head>
   <body onload="(getUserData(), openDialog())">
-    <img class="main-logo-request-page" src="./assets/icons/main_logo_dark.png" alt="" />
+    <img
+      class="main-logo-request-page"
+      src="./assets/icons/main_logo_dark.png"
+      alt=""
+    />
     <div class="request-page">
       <div class="welcome-container-card">
         <header class="request-header">
-          <a href="./index.html"> <img class="request-header-img" src="./assets/icons/back.svg" alt="" /></a>
+          <a href="./index.html">
+            <img
+              class="request-header-img"
+              src="./assets/icons/back.svg"
+              alt=""
+          /></a>
           <p><b>0</b> of <b>10</b> requests used today</p>
         </header>
 
-        <h1>Welcome</h1>
+        <h1 class="request-h1">Welcome</h1>
 
-        <div class="how-to-text">
-          <div>
-            <h2>
-              Easily create a ticket by sending a request — no extra steps
-              needed.
-            </h2>
-            <p>
-              On this platform, you can submit your feature requests via a
-              request form. Our AI system will automatically generate a ticket
-              with a deadline and priority level.
-            </p>
-            <p>
-              A total of 10 requests can be created per day. After this limit,
-              request can still be sent, but they will be manually reviewed by
-              our team instead of generating AI tickets.
-            </p>
+        <div class="how-to-card">
+          <div class="how-to-text">
+            <div>
+              <h2 class="request-h2">
+                Easily create a ticket by sending a request — no extra steps
+                needed.
+              </h2>
+              <p class="request-text">
+                On this platform, you can submit your feature requests via a
+                request form. Our AI system will automatically generate a ticket
+                with a deadline and priority level.
+              </p>
+              <p class="request-text">
+                A total of 10 requests can be created per day. After this limit,
+                request can still be sent, but they will be manually reviewed by
+                our team instead of generating AI tickets.
+              </p>
+            </div>
+
+            <img class="request-img" src="./assets/icons/request_ok.svg" alt="" />
           </div>
-
-          <img src="" alt="" />
+          <button class="request-button create-request-button">Create request <img class="create-request-img" src="./assets/icons/check_light.svg" alt="" /></button>
         </div>
-
-        <button>Create request <img src="" alt="" /></button>
       </div>
 
       <div class="dialog-footer">
