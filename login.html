@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="styles/login_resp.css">
         <link rel="stylesheet" href="styles/request.css">
     </head>
-    <body class="login-body" onload="getUserData(), openDialog()">
+    <body class="login-body" onload="getUserData(), openRequestDialog()">
         <header class="login-header">
             <img src="assets/icons/main_logo_dark.png" class="static-header-logo" alt="Join Logo">
             <div id="signup-content-header" class="signup-content desktop-only">
@@ -80,7 +80,7 @@
                 </div>
                 <div class="welcome-card-choose">
                     <p class="welcome-card-choose-text"><img class="welcome-card-choose-img" src="./assets/icons/member-login.svg" alt="">Are you a team member?</p>
-                    <button class="member-button" onclick="closeDialog()" href="">Member log in</button>
+                    <button class="member-button" onclick="closeRequestDialog()" href="">Member log in</button>
                 </div>
             </div>
         </div>

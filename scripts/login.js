@@ -3,7 +3,7 @@ const fireBaseUrl =
 const emailData = document.getElementById("email-input-login");
 const passwordData = document.getElementById("password-input-login");
 const inputImg = document.getElementById("input-password-img");
-const dialog = document.getElementById("request-dialog");
+const requestDialog = document.getElementById("request-dialog");
 let initialViewportHeight = window.visualViewport.height;
 
 let wasEmpty = true;
@@ -189,12 +189,12 @@ function sortContacts(contacts) {
 /**
  * Dialogmanagement
  */
-function openDialog() {
-  dialog.showModal()
+function openRequestDialog() {
+  requestDialog.showModal()
 }
 
-function closeDialog() {
-  dialog.close();
+function closeRequestDialog() {
+  requestDialog.close();
 }
 
 

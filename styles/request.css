@@ -283,3 +283,9 @@ button {
     border-radius: 8px;
     margin-bottom: 32px;
 }
+
+.main-logo-request-form-page {
+    width: 100px;
+    height: auto;
+    margin: 16px;
+}

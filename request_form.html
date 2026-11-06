@@ -1,1 +1,105 @@
-form
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+    <title>Join Kanban</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/request.css" />
+    <link rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="styles/login_resp.css" />
+  </head>
+  <body onload="getUserData()">
+    <img
+      class="main-logo-request-form-page"
+      src="./assets/icons/main_logo_dark.png"
+      alt=""
+    />
+
+    <div class="form-card">
+      <div class="form-content">
+        <header class="form-header">
+          <img class="form-header-img" src="" alt="" />
+          <h1 class="form-header-h1"></h1>
+        </header>
+        <hr class="form-header-hr" />
+
+        <form
+          onsubmit="handleSubmit(event)"
+          class="add-contact-dialog-form"
+          novalidate
+        >
+          <p class="dialog-input-handler">
+            <input
+              oninput="checkContactFormValidity()"
+              required
+              id="request-name"
+              placeholder="Name"
+              class="add-contact-dialog-right-inputfield"
+              type="text"
+            /><img
+              class="add-contact-dialog-right-input-img"
+              src="./assets/icons/person.png"
+              alt=""
+            />
+          </p>
+          <p class="dialog-input-handler">
+            <input
+              oninput="checkContactFormValidity()"
+              required
+              id="request-email"
+              placeholder="Email"
+              class="add-contact-dialog-right-inputfield"
+              type="email"
+            /><img
+              class="add-contact-dialog-right-input-img"
+              src="./assets/icons/mail.png"
+              alt=""
+            />
+          </p>
+          <p class="dialog-input-handler">
+            <input
+              oninput="checkContactFormValidity()"
+              required
+              id="request-subject"
+              placeholder="Subject"
+              class="add-contact-dialog-right-inputfield"
+              type="text"/>
+          </p>
+          <p class="dialog-input-handler">
+            <textarea name="" id="request-text" class="add-contact-dialog-right-inputfield" placeholder="Your Request..." oninput="checkContactFormValidity() "></textarea>
+          </p>
+
+          
+          <div class="error-container">
+            <span id="add-error-text" class="error-text"></span>
+          </div>
+          <div class="dialog-button-handler">
+            <button disabled id="add-contact-button" type="submit" class="btn-dialog add-contact-dialog-button-create">Send request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <a
+        onclick="noLoginToShow()"
+        id="privacy-policy-link"
+        class="privacy-and-legal-links"
+        href="index.html?page=privacy"
+        >Privacy Policy</a
+      >
+      <a
+        id="legal-notice-link"
+        class="privacy-and-legal-links"
+        href="index.html?page=legal"
+        >Legal notice</a
+      >
+    </div>
+  </body>
+  <script src="scripts/login.js" defer></script>
+  <script src="scripts/request.js" defer></script>
+  <script src="templates/templatefunctions/templatefunctions.js" defer></script>
+  <script src="script.js" defer></script>
+</html>
