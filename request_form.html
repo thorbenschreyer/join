@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styles/login.css" />
     <link rel="stylesheet" href="styles/login_resp.css" />
-    <link rel="stylesheet" href="./styles/contact_dialog.css">
+    <link rel="stylesheet" href="./styles/contact_dialog.css" />
     <link rel="stylesheet" href="styles/request.css" />
   </head>
-  <body onload="getUserData()">
+  <body onload="(getUserData())">
     <img
       class="main-logo-request-form-page"
       src="./assets/icons/main_logo_dark.png"
@@ -21,13 +21,18 @@
     <div class="form-card">
       <div class="form-content">
         <header class="form-header">
-          <a href="./login.html"><img class="form-header-img" src="./assets/icons/arrow-left-line.png" alt="" /></a>
+          <a href="./login.html"
+            ><img
+              class="form-header-img"
+              src="./assets/icons/arrow-left-line.png"
+              alt=""
+          /></a>
           <h1 class="form-header-h1">Your Request</h1>
         </header>
         <hr class="form-header-hr" />
 
         <form
-          onsubmit=""
+          onsubmit="sendRequest(event)"
           class="request-card-form"
           novalidate
         >
@@ -66,41 +71,83 @@
               id="request-subject"
               placeholder="Subject"
               class="add-contact-dialog-right-inputfield request-form"
-              type="text"/>
+              type="text"
+            />
           </p>
           <p class="request-form-input-handler">
-            <textarea oninput="checkRequestValidity()" name="" id="request-text" class="add-contact-dialog-right-inputfield  request-form" placeholder="Your Request..." oninput="checkContactFormValidity() "></textarea>
+            <textarea
+              oninput="checkRequestValidity()"
+              name=""
+              id="request-text"
+              class="add-contact-dialog-right-inputfield request-form"
+              placeholder="Your Request..."
+            ></textarea>
           </p>
 
-          
           <div class="request-error-container">
             <span id="request-error-text" class="request-error-text"></span>
           </div>
           <div class="request-form-button">
-            <button disabled onclick="sendRequest()" id="send-request-button" type="submit" class="add-contact-dialog-button-create request-form-btn">Send request</button>
+            <button
+              disabled
+              id="send-request-button"
+              type="submit"
+              class="add-contact-dialog-button-create request-form-btn"
+            >
+              Send request
+            </button>
           </div>
         </form>
       </div>
 
-    <footer class="dialog-footer">
-      <a
-        onclick="noLoginToShow()"
-        id="privacy-policy-link"
-        class="privacy-and-legal-links"
-        href="index.html?page=privacy"
-        >Privacy Policy</a
-      >
-      <a
-        id="legal-notice-link"
-        class="privacy-and-legal-links"
-        href="index.html?page=legal"
-        >Legal notice</a
-      >
-    </footer>
+      <footer class="dialog-footer">
+        <a
+          onclick="noLoginToShow()"
+          id="privacy-policy-link"
+          class="privacy-and-legal-links"
+          href="index.html?page=privacy"
+          >Privacy Policy</a
+        >
+        <a
+          id="legal-notice-link"
+          class="privacy-and-legal-links"
+          href="index.html?page=legal"
+          >Legal notice</a
+        >
+      </footer>
     </div>
+
+    <dialog class="succses-request-dialog" id="succses-request-dialog">
+      <div class="succses-dialog-content">
+        <div class="succses-dialog-information">
+          <p class="sned_sucsess_text">Your request has been sent successfully!</p>
+          <img class="send_sucsess_img" src="./assets/icons/send_request_sucsess.png" alt="" />
+        </div>
+
+        <div class="choose-section">
+          <div class="welcome-card-choose">
+            <button
+              class="request-button"
+              onclick="window.location.href = 'request_page.html'"
+            >
+              Create new request
+            </button>
+          </div>
+          <div class="welcome-card-choose">
+            <button
+              class="member-button"
+              onclick="window.location.href = 'login.html'"
+            >
+              Back to start
+            </button>
+          </div>
+        </div>
+      </div>
+    </dialog>
   </body>
   <script src="scripts/login.js" defer></script>
-  <script src="scripts/request.js" defer></script>
+
   <script src="templates/templatefunctions/templatefunctions.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="scripts/request.js" defer></script>
 </html>

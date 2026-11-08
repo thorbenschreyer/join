@@ -390,3 +390,53 @@ textarea {
   color: red;
   font-family: "Inter", sans-serif;
 }
+
+.succses-request-dialog {
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+  height: 350px;
+  background-color: rgb(245, 245, 248);
+  border-radius: 30px;
+  animation: slideInFromBottom 0.6s ease-out forwards;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.succses-request-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.send_sucsess_img {
+  width: 250px;
+  height: auto;
+}
+
+.succses-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px;
+}
+
+.succses-dialog-information {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sned_sucsess_text {
+  text-align: center;
+  font-size: 24px;
+  margin-right: 12px;
+}
