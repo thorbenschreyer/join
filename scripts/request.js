@@ -18,25 +18,28 @@ function setRequestText() {
     }
 }
 
-function validateRequest(name, email, text) {
+function validateRequest(name, email, subject, text) {
   const nameRegex = /^[A-Za-zÄÖÜäöüß\s'\-]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.(de|com|org|net)$/;
+  const subjectRegex = /^(?=.*[a-zA-Z])(?=.*\d).{3,}$/;
   const textRegex = /^(?=.*[a-zA-Z])(?=.*\d).{10,}$/;
 
   if (!nameRegex.test(name)) return "Invalid name. Only letters and hyphens allowed.";
   if (!emailRegex.test(email)) return "Invalid email. “@” and valid domain required.";
+  if (!subjectRegex.test(subject)) return "The subject must consist of at least 3 characters.";
   if (!textRegex.test(text)) return "The text must consist of at least 10 characters.";
 
   return null;
 }
 
-function checkContactFormValidity() {
-  const name = document.getElementById("contact-name").value.trim();
-  const email = document.getElementById("contact-email").value.trim();
-  const phone = document.getElementById("contact-phone").value.trim();
-  const button = document.getElementById("add-contact-button");
+function checkRequestValidity() {
+  const name = document.getElementById("request-name").value.trim();
+  const email = document.getElementById("request-email").value.trim();
+  const subjet = document.getElementById("request-subject").value.trim();
+  const text = document.getElementById("request-text").value.trim();
+  const button = document.getElementById("send-request-button");
 
-  if (!name || !email || !phone) {
+  if (!name || !email || !text || !subjet) {
     button.disabled = true;
   } else {
     button.disabled = false;

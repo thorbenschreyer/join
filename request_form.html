@@ -27,13 +27,13 @@
         <hr class="form-header-hr" />
 
         <form
-          onsubmit="handleSubmit(event)"
+          onsubmit=""
           class="request-card-form"
           novalidate
         >
           <p class="request-form-input-handler">
             <input
-              oninput="checkContactFormValidity()"
+              oninput="checkRequestValidity()"
               required
               id="request-name"
               placeholder="Name"
@@ -47,7 +47,7 @@
           </p>
           <p class="request-form-input-handler">
             <input
-              oninput="checkContactFormValidity()"
+              oninput="checkRequestValidity()"
               required
               id="request-email"
               placeholder="Email"
@@ -61,7 +61,7 @@
           </p>
           <p class="request-form-input-handler">
             <input
-              oninput="checkContactFormValidity()"
+              oninput="checkRequestValidity()"
               required
               id="request-subject"
               placeholder="Subject"
@@ -69,7 +69,7 @@
               type="text"/>
           </p>
           <p class="request-form-input-handler">
-            <textarea name="" id="request-text" class="add-contact-dialog-right-inputfield  request-form" placeholder="Your Request..." oninput="checkContactFormValidity() "></textarea>
+            <textarea oninput="checkRequestValidity()" name="" id="request-text" class="add-contact-dialog-right-inputfield  request-form" placeholder="Your Request..." oninput="checkContactFormValidity() "></textarea>
           </p>
 
           
@@ -77,7 +77,7 @@
             <span id="add-error-text" class="error-text"></span>
           </div>
           <div class="request-form-button">
-            <button id="add-contact-button" type="submit" class="add-contact-dialog-button-create request-form-btn">Send request</button>
+            <button disabled id="send-request-button" type="submit" class="add-contact-dialog-button-create request-form-btn">Send request</button>
           </div>
         </form>
       </div>
