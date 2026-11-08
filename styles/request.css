@@ -342,10 +342,10 @@ button {
 
 .request-form-input-handler {
   position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .request-form-img {
@@ -357,18 +357,18 @@ button {
   display: flex;
   width: 75%;
   justify-content: end;
-  margin-top: 24px;
+  margin-top: 12px;
 }
 
-.request-form-btn{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
+.request-form-btn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 textarea {
@@ -377,4 +377,16 @@ textarea {
 
 .form-header-img:hover {
   content: url(../assets/icons/arrow_left_line_hover.png);
+}
+
+.request-error-container {
+  width: 75%;
+  height: 20px;
+  text-align: end;
+}
+
+.request-error-text {
+  width: 100%;
+  color: red;
+  font-family: "Inter", sans-serif;
 }

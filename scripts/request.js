@@ -19,10 +19,10 @@ function setRequestText() {
 }
 
 function validateRequest(name, email, subject, text) {
-  const nameRegex = /^[A-Za-zÄÖÜäöüß\s'\-]+$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.(de|com|org|net)$/;
-  const subjectRegex = /^(?=.*[a-zA-Z])(?=.*\d).{3,}$/;
-  const textRegex = /^(?=.*[a-zA-Z])(?=.*\d).{10,}$/;
+  const nameRegex = /^[A-Za-zÄÖÜäöüß\s'-]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+  const subjectRegex = /^.{3,}$/;
+  const textRegex = /^[\s\S]{10,}$/;
 
   if (!nameRegex.test(name)) return "Invalid name. Only letters and hyphens allowed.";
   if (!emailRegex.test(email)) return "Invalid email. “@” and valid domain required.";
@@ -35,13 +35,19 @@ function validateRequest(name, email, subject, text) {
 function checkRequestValidity() {
   const name = document.getElementById("request-name").value.trim();
   const email = document.getElementById("request-email").value.trim();
-  const subjet = document.getElementById("request-subject").value.trim();
+  const subject = document.getElementById("request-subject").value.trim();
   const text = document.getElementById("request-text").value.trim();
-  const button = document.getElementById("send-request-button");
 
-  if (!name || !email || !text || !subjet) {
-    button.disabled = true;
-  } else {
-    button.disabled = false;
-  }
+  const button = document.getElementById("send-request-button");
+  const errorMessage = document.getElementById("request-error-text");
+
+  const error = validateRequest(name, email, subject, text);
+
+  button.disabled = error !== null;
+
+  errorMessage.textContent = error || "";
+}
+
+function sendRequest() {
+
 }
