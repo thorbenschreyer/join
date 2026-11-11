@@ -184,6 +184,29 @@
     width: 40px;
     margin-right: 16px;
   }
+
+  .high-prio {
+    height: 40px;
+    width: 40px;
+    margin-left: 8px;
+  }
+
+  .medium-prio {
+    height: 40px;
+    width: 40px;
+    margin-left: 8px;
+  }
+
+  .low-prio {
+    height: 40px;
+    width: 40px;
+    margin-left: 8px;
+  }
+
+  .mobile-width-todo {
+    min-width: 45px;
+    width: 100%;
+  }
 }
 
 @media (max-width: 420px) {

@@ -37,10 +37,10 @@
     </div>
 
     <div onclick="clickInSummaryBoard()" class="dated-task">
-      <div class="task-summary-style task-display">
+      <div class="task-summary-style request-line-width-date task-display">
         <div class="task-display">
           <img id="prio-img" class="high-prio" src="" alt="" />
-          <div class="task-content">
+          <div class="task-content mobile-width-todo">
             <p class="task-number" id="todo-date"></p>
             <p class="task-text">To-do</p>
           </div>
@@ -50,6 +50,13 @@
           <p class="task-date" id="date-in-Summary"></p>
           <p class="task-date-text">Upcoming Deadline</p>
         </div>
+      </div>
+            <div
+        onclick="clickInSummaryBoard()"
+        class="task-summary-style request-line-width-requests task-content"
+      >
+        <p class="task-number request-number-color request-line-width-requests" id="requests-task-number"></p>
+        <p class="task-text">Email <br />requests</p>
       </div>
     </div>
 
