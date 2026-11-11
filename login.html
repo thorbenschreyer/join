@@ -1,103 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
-        <title>Join Kanban</title>
-        <link rel="stylesheet" href="styles/login.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="styles/login_resp.css">
-        <link rel="stylesheet" href="styles/request.css">
-    </head>
-    <body class="login-body" onload="getUserData(), openRequestDialog()">
-        <header class="login-header">
-            <img src="assets/icons/main_logo_dark.png" class="static-header-logo" alt="Join Logo">
-            <div id="signup-content-header" class="signup-content desktop-only">
-                <p>Not a Join user?</p>
-                <a href="sign_up.html"><button class="signup-button dark-button">Sign up</button></a>
-            </div>
-        </header>
-        <div class="intro-overlay" id="introOverlay">
-        </div>
-        <div class="logo-container" id="logo-container">
-            <img src="assets/icons/main_logo_light.png" alt="Join Logo" class="main-logo-mobile">
-            <img src="assets/icons/main_logo_dark.png" class="main-logo" alt="Join Logo">
-        </div>
-        <div class="container-login-form">
-            <form class="login-form" novalidate onsubmit="loginSubmit(event)">
-                <section id="container-heading-and-underline" class="container-heading-and-underline">
-                    <h2 class="login-heading">Log in</h2>
-                    <div class="underline-login-heading"></div>
-                </section>
-                <section id="container-login-inputs" class="container-login-inputs">
-                    <div class="input-wrapper">
-                        <input type="email" class="inputs-login" id="email-input-login" oninput="hideErrorOnInput()" placeholder="Email" required>
-                        <img src="assets/icons/mail.png" class="input-icon" alt="Mail Icon">
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="password" class="inputs-login" id="password-input-login" oninput="hideErrorOnInput()" placeholder="Password" required>
-                        <img id="input-password-img" src="assets/icons/lock.png" class="input-icon" alt="Lock Icon">
-                    </div>
-                    <div id="container-error-message" class="container-error-message  d-none">
-                        <p id="email-error" class="error-message">Check your email and password. Please try again.</p>
-                    </div>
-                </section>
-                <section id="container-login-buttons" class="container-login-buttons">
-                    <button type="submit" class="buttons-login dark-button" id="login">Log in</button>
-                    <button type="button" onclick="guestLogin()" class="buttons-login bright-login-button" id="guest-login">Guest Log in</button>
-                </section>
-            </form>
-        </div>
-        <section id="container-signup-and-privacy-policy" class="container-signup-and-privacy-policy">
-            <div id="signup-content-mobile" class="signup-content mobile-only">
-                <p>Not a Join user?</p>
-                <a href="sign_up.html"><button class="signup-button dark-button">Sign up</button></a>
-            </div>
-
-            <div id="privacy-policy" class="privacy-policy-and-legal-notice-links-container">
-                <a onclick="noLoginToShow()" id="privacy-policy-link" class="privacy-and-legal-links" href="index.html?page=privacy">Privacy Policy</a>
-                <a id="legal-notice-link" class="privacy-and-legal-links" href="index.html?page=legal">Legal notice</a>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+    <title>Join Kanban</title>
+    <link rel="stylesheet" href="styles/login.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/login_resp.css" />
+    <link rel="stylesheet" href="styles/request.css" />
+    <link rel="stylesheet" href="styles/request_mobile.css" />
+  </head>
+  <body class="login-body" onload="(getUserData(), openRequestDialog())">
+    <header class="login-header">
+      <img
+        src="assets/icons/main_logo_dark.png"
+        class="static-header-logo"
+        alt="Join Logo"
+      />
+      <div id="signup-content-header" class="signup-content desktop-only">
+        <p>Not a Join user?</p>
+        <a href="sign_up.html"
+          ><button class="signup-button dark-button">Sign up</button></a
+        >
+      </div>
+    </header>
+    <div class="intro-overlay" id="introOverlay"></div>
+    <div class="logo-container" id="logo-container">
+      <img
+        src="assets/icons/main_logo_light.png"
+        alt="Join Logo"
+        class="main-logo-mobile"
+      />
+      <img
+        src="assets/icons/main_logo_dark.png"
+        class="main-logo"
+        alt="Join Logo"
+      />
+    </div>
+    <div class="container-login-form">
+      <form class="login-form" novalidate onsubmit="loginSubmit(event)">
+        <section
+          id="container-heading-and-underline"
+          class="container-heading-and-underline"
+        >
+          <h2 class="login-heading">Log in</h2>
+          <div class="underline-login-heading"></div>
         </section>
+        <section id="container-login-inputs" class="container-login-inputs">
+          <div class="input-wrapper">
+            <input
+              type="email"
+              class="inputs-login"
+              id="email-input-login"
+              oninput="hideErrorOnInput()"
+              placeholder="Email"
+              required
+            />
+            <img
+              src="assets/icons/mail.png"
+              class="input-icon"
+              alt="Mail Icon"
+            />
+          </div>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              class="inputs-login"
+              id="password-input-login"
+              oninput="hideErrorOnInput()"
+              placeholder="Password"
+              required
+            />
+            <img
+              id="input-password-img"
+              src="assets/icons/lock.png"
+              class="input-icon"
+              alt="Lock Icon"
+            />
+          </div>
+          <div
+            id="container-error-message"
+            class="container-error-message d-none"
+          >
+            <p id="email-error" class="error-message">
+              Check your email and password. Please try again.
+            </p>
+          </div>
+        </section>
+        <section id="container-login-buttons" class="container-login-buttons">
+          <button type="submit" class="buttons-login dark-button" id="login">
+            Log in
+          </button>
+          <button
+            type="button"
+            onclick="guestLogin()"
+            class="buttons-login bright-login-button"
+            id="guest-login"
+          >
+            Guest Log in
+          </button>
+        </section>
+      </form>
+    </div>
+    <section
+      id="container-signup-and-privacy-policy"
+      class="container-signup-and-privacy-policy"
+    >
+      <div id="signup-content-mobile" class="signup-content mobile-only">
+        <p>Not a Join user?</p>
+        <a href="sign_up.html"
+          ><button class="signup-button dark-button">Sign up</button></a
+        >
+      </div>
 
+      <div
+        id="privacy-policy"
+        class="privacy-policy-and-legal-notice-links-container"
+      >
+        <a
+          onclick="noLoginToShow()"
+          id="privacy-policy-link"
+          class="privacy-and-legal-links"
+          href="index.html?page=privacy"
+          >Privacy Policy</a
+        >
+        <a
+          id="legal-notice-link"
+          class="privacy-and-legal-links"
+          href="index.html?page=legal"
+          >Legal notice</a
+        >
+      </div>
+    </section>
 
     <dialog id="request-dialog">
-        <div class="dialog-card">
-        <div class="start-img-container">
-            <img src="assets/icons/main_logo_dark.png" class="start-img" alt="Join Logo">
-        </div>
         
+      <div class="dialog-card">
+        <img
+          class="main-logo-mobile-request"
+          src="./assets/icons/main_logo_light.png"
+          alt=""
+        />
+        <div class="start-img-container">
+          <img
+            src="assets/icons/main_logo_dark.png"
+            class="start-img"
+            alt="Join Logo"
+          />
+        </div>
+<div class="mobile-login-request">Not a Join user? <a class="mobile-sign-up" href="./sign_up.html">Sign up</a></div>
         <div class="welcome-card">
-            <h1 class="welcome-card-h1">Welcome</h1>
-            <hr class="welcome-card-hr">
-            <div>
-            <p class="welcome-card-text">Pick the option that suits your role: create a request as a stakeholder or log in if you’re part of the team.</p>
+          <h1 class="welcome-card-h1">Welcome</h1>
+          <hr class="welcome-card-hr" />
+          <div>
+            <p class="welcome-card-text">
+              Pick the option that suits your role: create a request as a
+              stakeholder or log in if you’re part of the team.
+            </p>
             <div class="choose-section">
-                <div class="welcome-card-choose">
-                    <p class="welcome-card-choose-text"><img class="welcome-card-choose-img" src="./assets/icons/work.svg" alt="">Are you a stakeholder?</p>
-                    <button class="request-button" onclick="window.location.href='request_page.html'">Create request</button>
-                </div>
-                <div class="welcome-card-choose">
-                    <p class="welcome-card-choose-text"><img class="welcome-card-choose-img" src="./assets/icons/member-login.svg" alt="">Are you a team member?</p>
-                    <button class="member-button" onclick="closeRequestDialog()" href="">Member log in</button>
-                </div>
+              <div class="welcome-card-choose">
+                <p class="welcome-card-choose-text">
+                  <img
+                    class="welcome-card-choose-img"
+                    src="./assets/icons/work.svg"
+                    alt=""
+                  />Are you a stakeholder?
+                </p>
+                <button
+                  class="request-button"
+                  onclick="window.location.href = 'request_page.html'"
+                >
+                  Create request
+                </button>
+              </div>
+              <div class="welcome-card-choose">
+                <p class="welcome-card-choose-text">
+                  <img
+                    class="welcome-card-choose-img"
+                    src="./assets/icons/member-login.svg"
+                    alt=""
+                  />Are you a team member?
+                </p>
+                <button
+                  class="member-button"
+                  onclick="closeRequestDialog()"
+                  href=""
+                >
+                  Member log in
+                </button>
+              </div>
             </div>
+          </div>
         </div>
-
-        </div>
-
 
         <div class="dialog-footer">
-                <a onclick="noLoginToShow()" id="privacy-policy-link" class="privacy-and-legal-links" href="index.html?page=privacy">Privacy Policy</a>
-                <a id="legal-notice-link" class="privacy-and-legal-links" href="index.html?page=legal">Legal notice</a>        
+          <a
+            onclick="noLoginToShow()"
+            id="privacy-policy-link"
+            class="privacy-and-legal-links"
+            href="index.html?page=privacy"
+            >Privacy Policy</a
+          >
+          <a
+            id="legal-notice-link"
+            class="privacy-and-legal-links"
+            href="index.html?page=legal"
+            >Legal notice</a
+          >
         </div>
-
-</div>
+      </div>
     </dialog>
-        </body>
-    <script src="scripts/login.js" defer></script>
-    <script src="script.js" defer></script>
+  </body>
+  <script src="scripts/login.js" defer></script>
+  <script src="script.js" defer></script>
 </html>
-
-
