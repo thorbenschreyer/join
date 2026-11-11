@@ -88,4 +88,29 @@
   .how-to-text {
     flex-direction: column;
   }
+
+  .main-logo-request-form-page {
+    width: 64px;
+    margin: 8px;
+}
+
+.form-content {
+    height: 440px;
+}
+
+.form-header {
+    margin: 24px 0px 8px;
+}
+
+.form-header-h1 {
+    font-size: 24px;
+}
+
+.add-contact-dialog-right-inputfield {
+    margin: 4px 0px;
+}
+
+.height-request-form-text {
+    height: 150px;
+}
 }
