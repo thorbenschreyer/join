@@ -26,12 +26,12 @@ function underTenRequests() {
 
 function overTenRequests() {
   return `
-            <div class="how-to-text">
+   <div class="how-to-text">
             <div>
               <p class="request-error">
                 The daily 10-request limit has been reached! 
               </p>
-              
+              <img class="request-img-mobile" src="./assets/icons/request_not_ok.svg" alt="" />
               <p class="request-text-no-request">
                 Need more? No worries — you can still send requests, but our team will review them manually instead of using AI to create tickets.
               </p>

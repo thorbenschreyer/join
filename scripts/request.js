@@ -2,11 +2,11 @@ const textElement = document.getElementById("how-to-card");
 const numberOfRequests = document.getElementById("number-of-requests");
 const requestColor = document.getElementById("request-color");
 const succsesDialog = document.getElementById("succses-request-dialog")
-let numberOfRequest = 11;
+let numberOfRequest = 8;
 
 function setRequestText() {
   if (numberOfRequest < 10) {
-    numberOfRequests.innerText = request.toString();
+    numberOfRequests.innerText = numberOfRequest.toString();
     textElement.innerHTML = underTenRequests();
     requestColor.classList.remove("number-of-requests-not-ok");
     requestColor.classList.add("number-of-requests-ok");
