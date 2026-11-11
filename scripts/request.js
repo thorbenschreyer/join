@@ -26,13 +26,13 @@ function validateRequest(name, email, subject, text) {
   const textRegex = /^[\s\S]{10,}$/;
 
   if (!nameRegex.test(name))
-    return "Invalid name. Only letters and hyphens allowed.";
+    return "Invalid name.";
   if (!emailRegex.test(email))
-    return "Invalid email. “@” and valid domain required.";
+    return "Invalid email.";
   if (!subjectRegex.test(subject))
-    return "The subject must consist of at least 3 characters.";
+    return "Minimum 3 characters.";
   if (!textRegex.test(text))
-    return "The text must consist of at least 10 characters.";
+    return "Minimum 10 characters.";
 
   return null;
 }
