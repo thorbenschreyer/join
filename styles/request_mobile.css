@@ -1,8 +1,16 @@
-.main-logo-mobile-request {
+.main-logo-mobile-request,
+.request-img-mobile {
   display: none;
 }
 
 @media (max-width: 790px) {
+  .request-img-mobile {
+    display: block;
+  }
+
+  .request-img {
+    display: none;
+  }
 
   .dialog-card {
     flex-direction: column;
@@ -75,5 +83,9 @@
 
   .member-button {
     font-size: 16px;
+  }
+
+  .how-to-text {
+    flex-direction: column;
   }
 }

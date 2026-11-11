@@ -7,6 +7,7 @@
     <title>Join Kanban</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styles/request.css" />
+    <link rel="stylesheet" href="styles/request_mobile.css" />
     <link rel="stylesheet" href="styles/login.css" />
     <link rel="stylesheet" href="styles/login_resp.css" />
   </head>
@@ -30,7 +31,25 @@
 
         <h1 class="request-h1">Welcome</h1>
 
-        <div id="how-to-card" class="how-to-card">        
+        <div id="how-to-car" class="how-to-card">       
+          
+          
+          <div class="how-to-text">
+            <div>
+              <p class="request-error">
+                The daily 10-request limit has been reached! 
+              </p>
+              <img class="request-img-mobile" src="./assets/icons/request_not_ok.svg" alt="" />
+              <p class="request-text-no-request">
+                Need more? No worries — you can still send requests, but our team will review them manually instead of using AI to create tickets.
+              </p>
+              <button class="request-button create-request-button  margin-top-32" onclick="window.location.href='request_form.html'">Create request <img class="create-request-img" src="./assets/icons/check_light.svg" alt="" /></button>
+            </div>
+
+            <img class="request-img" src="./assets/icons/request_not_ok.svg" alt="" />
+          </div>
+
+
         </div>
       </div>
 

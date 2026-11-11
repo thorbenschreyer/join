@@ -196,7 +196,7 @@ button {
 .welcome-container-card {
   display: flex;
   flex-direction: column;
-
+  margin: 0px 16px;
   align-items: center;
   max-width: 1120px;
   width: 100%;
