@@ -1,20 +1,31 @@
+
 /**
  * Updates the task category in Firebase.
- * @param {string} firebaseId - The Firebase ID of the task.
- * @param {string} newCategory - The new category.
+ * @param {string} firebaseId - Firebase task ID.
+ * @param {string} newCategory - Target category.
  */
 async function updateFirebaseCategory(firebaseId, newCategory) {
   const url = `${BASE_URL}tasks/${firebaseId}.json`;
-  const payload = JSON.stringify({ currentTask: newCategory });
-  await fetch(url, {
-    method: "POST",
+
+  const response = await fetch(url, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      "X-HTTP-Method-Override": "PATCH",
     },
-    body: payload,
+    body: JSON.stringify({
+      currentTask: newCategory,
+    }),
   });
+
+  if (!response.ok) {
+    throw new Error(
+      `Firebase update failed: ${response.status}`
+    );
+  }
+
+  return await response.json();
 }
+
 
 /**
  * Updates the subtask state in Firebase.

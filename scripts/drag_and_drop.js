@@ -1,180 +1,377 @@
+
 let currentDraggedElement;
+let taskMoveInProgress = false;
+
+const BOARD_CATEGORIES = [
+  "triage",
+  "to-do",
+  "in-progress",
+  "await-feedback",
+  "done"
+];
 
 /**
- * Initializes touch polyfill for drag and drop on touch devices.
+ * Initializes touch drag and drop.
  */
 function initTouchPolyfill() {
-  const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-  if (isTouch) {
-    MobileDragDrop.polyfill({
-      forceApply: true,
-      holdToDrag: 250,
-      dragImageTranslateOverride:
-        MobileDragDrop.scrollBehaviourDragImageTranslateOverride,
-    });
-    setupPolyfillTouchmove();
-  }
+  const isTouch =
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0;
+
+  if (!isTouch || initTouchPolyfill.initialized) return;
+  if (typeof MobileDragDrop === "undefined") return;
+
+  MobileDragDrop.polyfill({
+    forceApply: true,
+    holdToDrag: 250,
+    dragImageTranslateOverride:
+      MobileDragDrop.scrollBehaviourDragImageTranslateOverride,
+  });
+
+  initTouchPolyfill.initialized = true;
+  setupPolyfillTouchmove();
 }
 
 /**
- * Sets up touchmove event listener.
- * The empty callback keeps the polyfill active during movement.
+ * Installs the touchmove listener only once.
  */
 function setupPolyfillTouchmove() {
-  window.addEventListener("touchmove", () => {}, { passive: false });
+  if (setupPolyfillTouchmove.initialized) return;
+
+  window.addEventListener(
+    "touchmove",
+    () => {},
+    { passive: false }
+  );
+
+  setupPolyfillTouchmove.initialized = true;
 }
 
 /**
- * Starts the drag operation for a task if window is wide enough.
- * @param {Event} event - The drag event.
- * @param {string} id - The task ID.
+ * Highlights all available drop zones.
+ */
+function setDropHighlights(enabled) {
+  BOARD_CATEGORIES.forEach(category => {
+    document
+      .getElementById(`${category}-tasks`)
+      ?.classList.toggle(
+        "drag-area-highlight",
+        enabled
+      );
+  });
+}
+
+/**
+ * Starts dragging a task.
  */
 function startDragging(event, id) {
-  if (window.innerWidth < 1420) return event.preventDefault();
-  currentDraggedElement = id;
-  event.dataTransfer.setData("text/plain", id.toString());
-  applyDragStyles(event.target);
-  ["to-do-tasks", "in-progress-tasks", "await-feedback-tasks", "done-tasks"]
-    .forEach(col => document.getElementById(col)?.classList.add("drag-area-highlight"));
+  if (
+    window.innerWidth < 1420 ||
+    taskMoveInProgress
+  ) {
+    event.preventDefault();
+    return;
+  }
+
+  currentDraggedElement = String(id);
+
+  event.dataTransfer.effectAllowed = "move";
+  event.dataTransfer.setData(
+    "text/plain",
+    String(id)
+  );
+
+  applyDragStyles(event.currentTarget);
+  setDropHighlights(true);
 }
 
 /**
- * Allows dropping on the target element if window is wide enough.
- * @param {Event} event - The drop event.
+ * Allows dropping into a task container.
  */
 function allowDrop(event) {
-  if (window.innerWidth >= 1420) {
+  if (
+    window.innerWidth >= 1420 &&
+    !taskMoveInProgress
+  ) {
     event.preventDefault();
+
+    if (event.dataTransfer) {
+      event.dataTransfer.dropEffect = "move";
+    }
   }
 }
 
 /**
- * Moves a dragged task to a new category and updates the order.
- * @param {Event} event - The drop event.
- * @param {string} category - The target category.
+ * Returns the currently dragged task.
+ */
+function getDraggedTask(event) {
+  const id =
+    currentDraggedElement ??
+    event?.dataTransfer?.getData("text/plain");
+
+  return tasks.find(
+    task => String(task.id) === String(id)
+  );
+}
+
+/**
+ * Moves a task into a column.
  */
 async function movingTo(event, category) {
   event.preventDefault();
-  const task = tasks.find((t) => t.id == currentDraggedElement);
-  if (!task || task.currentTask === category) return;
-  task.currentTask = category;
+
+  if (
+    taskMoveInProgress ||
+    !BOARD_CATEGORIES.includes(category)
+  ) {
+    return;
+  }
+
+  const task = getDraggedTask(event);
+
+  if (!task || task.currentTask === category) {
+    return;
+  }
+
   await reorderAndSaveCategory(task, category);
 }
 
 /**
- * Reorders tasks locally, saves to Firebase, and then re-renders the board.
- * @param {Object} task - The task object that was moved.
- * @param {string} category - The new category of the task.
+ * Moves a task to another category and
+ * updates the ordering in Firebase.
  */
-async function reorderAndSaveCategory(task, category) {
-  const col = tasks.filter(t => t.currentTask === category).sort((a, b) => (a.sortIndex || 0) - (b.sortIndex || 0));
-  const idx = col.indexOf(task);
-  if (idx > -1) col.splice(idx, 1);
-  col.unshift(task);
-  col.forEach((t, i) => (t.sortIndex = i));
+async function reorderAndSaveCategory(
+  task,
+  category,
+  targetTask = null
+) {
+  if (
+    taskMoveInProgress ||
+    !BOARD_CATEGORIES.includes(category)
+  ) {
+    return;
+  }
+
+  taskMoveInProgress = true;
+
+  const originalCategory = task.currentTask;
+
+  const originalIndexes = new Map(
+    tasks.map(t => [t, t.sortIndex])
+  );
+
   try {
-    await updateFirebaseCategory(task.firebaseId, category);
-    await updateCategoryOrder(col);
-    await boardInit(); 
-  } catch (e) {
-    console.error("Error saving to Firebase:", e);
+    const column = tasks
+      .filter(
+        t =>
+          t !== task &&
+          t.currentTask === category
+      )
+      .sort(
+        (a, b) =>
+          (a.sortIndex ?? 0) -
+          (b.sortIndex ?? 0)
+      );
+
+    const targetIndex = targetTask
+      ? column.indexOf(targetTask)
+      : -1;
+
+    column.splice(
+      targetIndex >= 0 ? targetIndex : 0,
+      0,
+      task
+    );
+
+    task.currentTask = category;
+
+    column.forEach((t, i) => {
+      t.sortIndex = i;
+    });
+
+    // Save category first.
+    await updateFirebaseCategory(
+      task.firebaseId,
+      category
+    );
+
+    // Save the new task order.
+    await updateCategoryOrder(column);
+
+    // Update the board.
+    renderAllTasks();
+
+  } catch (error) {
+    console.error(
+      "Could not move task:",
+      error
+    );
+
+    task.currentTask = originalCategory;
+
+    originalIndexes.forEach((index, t) => {
+      t.sortIndex = index;
+    });
+
+    // Reload from Firebase if available.
+    try {
+      if (typeof loadTasks === "function") {
+        await loadTasks();
+      }
+    } catch (reloadError) {
+      console.error(
+        "Could not reload tasks:",
+        reloadError
+      );
+    }
+
+    renderAllTasks();
+
+  } finally {
+    taskMoveInProgress = false;
+    currentDraggedElement = undefined;
+    setDropHighlights(false);
   }
 }
 
 /**
- * Drops a dragged task onto another task, reordering within the same category.
- * @param {Event} event - The drop event.
- * @param {string} targetId - The ID of the target task.
+ * Handles dropping a task onto another task.
  */
 async function dropOnTask(event, targetId) {
   event.preventDefault();
   event.stopPropagation();
-  const drag = tasks.find((t) => t.id == currentDraggedElement);
-  const target = tasks.find((t) => t.id == targetId);
-  if (!drag || !target || drag === target) return;
-  drag.currentTask = target.currentTask;
-  await updateDroppedTaskOrder(drag, target);
-}
 
-/**
- * Updates the order of tasks after a task is dropped onto another task,
- * reordering them within the same category.
- * @param {Object} drag - The dragged task object.
- * @param {Object} target - The target task object onto which the drag task was dropped.
- */
-async function updateDroppedTaskOrder(drag, target) {
-  const col = tasks
-    .filter((t) => t.currentTask === target.currentTask)
-    .sort((a, b) => (a.sortIndex || 0) - (b.sortIndex || 0));
-  const dragIndex = col.indexOf(drag);
-  if (dragIndex > -1) {
-    col.splice(dragIndex, 1);
-  }
-  col.splice(col.indexOf(target), 0, drag);
-  col.forEach((t, i) => (t.sortIndex = i));
-  await boardInit();
-  await updateCategoryOrder(col);
-}
+  if (taskMoveInProgress) return;
 
-/**
- * Updates the sortIndex for all tasks in a category concurrently.
- *
- * @param {Array} col The array of tasks in the category.
- */
-async function updateCategoryOrder(col) {
-  const promises = col.map((t, i) =>
-    fetch(`${BASE_URL}tasks/${t.firebaseId}/sortIndex.json`, {
-      method: "PUT",
-      body: JSON.stringify(i),
-    })
+  const drag = getDraggedTask(event);
+
+  const target = tasks.find(
+    t => String(t.id) === String(targetId)
   );
-  await Promise.all(promises);
+
+  if (
+    !drag ||
+    !target ||
+    drag === target
+  ) {
+    return;
+  }
+
+  await updateDroppedTaskOrder(
+    drag,
+    target
+  );
 }
 
 /**
- * Updates the sortIndex for all tasks in Firebase.
+ * Moves a dragged task before the target task.
+ */
+async function updateDroppedTaskOrder(
+  drag,
+  target
+) {
+  await reorderAndSaveCategory(
+    drag,
+    target.currentTask,
+    target
+  );
+}
+
+/**
+ * Saves the ordering of tasks in Firebase.
+ */
+async function updateCategoryOrder(column) {
+  const responses = await Promise.all(
+    column.map((task, index) =>
+      fetch(
+        `${BASE_URL}tasks/${task.firebaseId}/sortIndex.json`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(index)
+        }
+      )
+    )
+  );
+
+  if (
+    responses.some(response => !response.ok)
+  ) {
+    throw new Error(
+      "Firebase rejected a task ordering update"
+    );
+  }
+}
+
+/**
+ * Updates the ordering of all tasks.
+ * Kept for compatibility.
  */
 async function updateTasksOrder() {
-  for (let i = 0; i < tasks.length; i++) {
-    tasks[i].sortIndex = i;
-    const url = `${BASE_URL}tasks/${tasks[i].firebaseId}/sortIndex.json`;
-    await fetch(url, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(i),
-    });
+  tasks.forEach((task, index) => {
+    task.sortIndex = index;
+  });
+
+  await updateCategoryOrder(tasks);
+}
+
+/**
+ * Stops dragging a task.
+ */
+function stopDragging(event) {
+  event.currentTarget.classList.remove(
+    "rotate-on-drag"
+  );
+
+  setDropHighlights(false);
+
+  if (!taskMoveInProgress) {
+    currentDraggedElement = undefined;
   }
 }
 
 /**
- * Cleans up drag styles after dragging ends.
- * @param {Event} event - The drag end event.
- */
-function stopDragging(event) {
-  event.target.classList.remove("rotate-on-drag");
-  ["to-do-tasks", "in-progress-tasks", "await-feedback-tasks", "done-tasks"]
-    .forEach(col => document.getElementById(col)?.classList.remove("drag-area-highlight"));
-}
-
-/**
- * Applies rotation style to the dragged element.
- * @param {Element} element - The dragged element.
+ * Applies visual drag styles.
  */
 function applyDragStyles(element) {
   setTimeout(() => {
-    element.classList.add("rotate-on-drag");
+    if (element.isConnected) {
+      element.classList.add(
+        "rotate-on-drag"
+      );
+    }
   }, 0);
 }
 
 /**
- * Moves a task to a new category via the dropdown menu.
- * @param {string} id - The task ID.
- * @param {string} category - The target category.
+ * Moves a task using the Move To dropdown.
  */
-async function moveTaskToCategory(id, category) {
-  const task = tasks.find((t) => t.id == id);
-  if (!task || task.currentTask === category) return;
-  task.currentTask = category;
-  closeMoveToDropdown(id); 
-  await reorderAndSaveCategory(task, category);
+async function moveTaskToCategory(
+  id,
+  category
+) {
+  const task = tasks.find(
+    t => String(t.id) === String(id)
+  );
+
+  if (
+    !task ||
+    task.currentTask === category ||
+    taskMoveInProgress
+  ) {
+    return;
+  }
+
+  if (
+    typeof closeMoveToDropdown === "function"
+  ) {
+    closeMoveToDropdown(id);
+  }
+
+  await reorderAndSaveCategory(
+    task,
+    category
+  );
 }
