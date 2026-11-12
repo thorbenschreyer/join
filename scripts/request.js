@@ -36,11 +36,11 @@ function validateRequest(name, email, subject, text) {
   if (!nameRegex.test(name))
     return "Invalid name.";
   if (!emailRegex.test(email))
-    return "Invalid email.";
+    return "Invalid email. Need @ and domain.";
   if (!subjectRegex.test(subject))
-    return "Minimum 3 characters.";
+    return "Subject need min. 3 characters.";
   if (!textRegex.test(text))
-    return "Minimum 10 characters.";
+    return "Request need min. 10 characters.";
 
   return null;
 }

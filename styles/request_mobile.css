@@ -231,3 +231,17 @@
     margin: unset;
   }
 }
+
+@media (max-height: 720px) {
+  #request-dialog .welcome-card {
+    height: unset;
+  }
+
+  #request-dialog .mobile-login-request {
+    margin-top: 100px;
+  }
+
+  .request-h1 {
+    margin-bottom: 24px;
+}
+}
