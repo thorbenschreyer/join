@@ -133,6 +133,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 100%;
+  gap: 12px;
 }
 
 .all-task-bars::-webkit-scrollbar {
@@ -199,7 +200,7 @@
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  width: 100%;
+  width: 105%;
   height: 100%;
   background-color: transparent;
   border: 2px solid transparent;
