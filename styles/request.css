@@ -233,7 +233,7 @@ button {
 .request-button {
   padding: 10px;
   border-radius: 8px;
-  background-color: rgba(23, 125, 168, 1);
+  background-color: rgba(42, 54, 71, 1);
   font-size: 23px;
   font-family: "Open-Sans-Light", sans-serif;
   font-weight: 400;
@@ -241,13 +241,26 @@ button {
   cursor: pointer;
 }
 
+.request-button:hover {
+  background-color: rgba(23, 125, 168, 1);
+  color: white;
+  box-shadow: 0 4 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 .member-button {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid rgba(42, 54, 71, 1);
   font-size: 23px;
+
   font-family: "Open-Sans-Light", sans-serif;
   cursor: pointer;
+}
+
+.member-button:hover {
+  box-shadow:
+    inset 0 0 0 2px rgba(23, 125, 168, 1),
+    0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .request-page {
