@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="styles/request.css" />
     <link rel="stylesheet" href="styles/request_mobile.css" />
   </head>
-  <body onload="(getUserData())">
+  <body onload="(getUserData()),  succsesDialog.showModal()">
     <img
       class="main-logo-request-form-page"
       src="./assets/icons/main_logo_dark.png"
@@ -128,7 +128,7 @@
         <div class="choose-section">
           <div class="welcome-card-choose">
             <button
-              class="request-button"
+              class="request-button reduce-height"
               onclick="window.location.href = 'request_page.html'"
             >
               Create new request

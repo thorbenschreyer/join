@@ -71,8 +71,5 @@ function sendRequest(event) {
     text: document.getElementById("request-text").value,
   };
 
-  console.log({
-    request,
-  });
   succsesDialog.showModal()
 }
