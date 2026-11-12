@@ -7,7 +7,7 @@
 
 @media (max-height: 800px) {
   .form-content {
-    margin: 95px 16px 0px 16px;
+    margin: 90px 16px 0px 16px;
     height: 470px;
   }
 
@@ -20,7 +20,17 @@
   }
 }
 
+@media (max-width: 910px) {
+  .main-logo-request-form-page {
+    width: 64px;
+    margin: 8px;
+  }
+}
+
 @media (max-width: 790px) {
+  .form-content {
+    width: 96%;
+  }
   .request-header {
     display: none;
   }
