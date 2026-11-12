@@ -16,17 +16,27 @@ function smallTask(element, closedSubtasksLength, id) {
           </button>
           <div id="move-to-dropdown-${id}" class="move-to-dropdown d-none" onclick="event.stopPropagation()">
             <h4 class="move-to-heading">Move to</h4>
+            <p
+              class="move-to-text"
+              onclick="moveTaskToCategory('${id}', 'triage')"
+            >
+              <img
+                src="./assets/icons/move_to_arrow_down.png"
+                class="move-to-arrow ${getArrowDirectionClass(element.currentTask, "triage")}"
+              >
+              triage
+            </p>
             <p class="move-to-text" onclick="moveTaskToCategory('${id}', 'to-do')">
-                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, 'todo')}"> to do
+                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, "to-do")}"> to do
             </p>
             <p class="move-to-text" onclick="moveTaskToCategory('${id}', 'in-progress')">
-                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, 'in-progress')}"> in progress
+                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, "in-progress")}"> in progress
             </p>
             <p class="move-to-text" onclick="moveTaskToCategory('${id}', 'await-feedback')">
-                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, 'await-feedback')}"> await feedback
+                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, "await-feedback")}"> await feedback
             </p>
             <p class="move-to-text" onclick="moveTaskToCategory('${id}', 'done')">
-                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, 'done')}"> done
+                <img src="./assets/icons/move_to_arrow_down.png" class="move-to-arrow ${getArrowDirectionClass(element.currentTask, "done")}"> done
             </p>
         </div>
         </div>  

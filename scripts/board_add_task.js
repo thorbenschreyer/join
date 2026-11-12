@@ -1,13 +1,16 @@
 /**
- * Opens the add task overlay for the specified task bar.
- * @param {string} selectedTaskBar - The target task category.
+ * Opens the add task overlay.
+ * New tasks are assigned to triage.
  */
-async function openAddTaskOverlay(selectedTaskBar) {
+async function openAddTaskOverlay(selectedTaskBar = "triage") {
   await loadHtmlPage("add-task-dialog", "./templates/add_tasks.html");
-  currentTaskBar = selectedTaskBar;
-  await prepareAddTaskDialogUI();
+
+  currentTaskBar = "triage";
+
+  prepareAddTaskDialogUI();
   initAddTaskElements();
 }
+
 
 /**
  * Updates the DOM elements to correctly display the add task overlay.

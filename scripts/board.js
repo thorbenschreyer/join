@@ -1,4 +1,4 @@
-let currentTaskBar = "to-do";
+let currentTaskBar = "triage";
 let subtaskPercent = 0;
 let currentSearchTerm = "";
 let searchTimeout;
@@ -90,14 +90,16 @@ function stopEventBubbling(event) {
 }
 
 /**
- * Renders all task bars: to-do, in-progress, await-feedback, and done.
+ * Renders all task categories on the board.
  */
 function renderAllTasks() {
+  renderTriageTasks();
   renderTodoTasks();
   renderInProgressTasks();
   renderAwaitFeedbackTasks();
   renderDoneTasks();
 }
+
 
 /**
  * Filters and sorts tasks for a specific category.
@@ -109,6 +111,35 @@ function getFilteredAndSortedTasks(category) {
     .filter((t) => t.currentTask === category && checkTaskMatch(t))
     .sort((a, b) => (a.sortIndex || 0) - (b.sortIndex || 0));
 }
+
+
+/**
+ * Renders all tasks with the status "triage".
+ */
+function renderTriageTasks() {
+  const triageTasks = getFilteredAndSortedTasks("triage");
+  const triageTaskBar = document.getElementById("triage-tasks");
+
+  if (!triageTaskBar) return;
+
+  if (triageTasks.length === 0) {
+    triageTaskBar.innerHTML =
+      renderPlaceholderTemplate("Triage");
+    return;
+  }
+
+  triageTaskBar.innerHTML = "";
+
+  triageTasks.forEach((task, index) => {
+    appendTaskToBar(
+      task,
+      index,
+      "triage",
+      triageTaskBar
+    );
+  });
+}
+
 
 /**
  * Appends a single task to a specific category bar.
@@ -309,16 +340,22 @@ function closeMoveToDropdown(id) {
   document.getElementById(`board-small-task-${id}`).classList.remove('dropdown-open');
 }
 
+
 /**
- * Determines the CSS class for arrow rotation based on task flow.
- * * @param {string} currentTask The current status of the task.
- * @param {string} targetTask The target status for the arrow.
- * @returns {string} The CSS class for rotation if moving upwards.
+ * Determines the arrow direction between task categories.
  */
 function getArrowDirectionClass(currentTask, targetTask) {
-  const order = ['todo', 'in-progress', 'await-feedback', 'done'];
+  const order = [
+    "triage",
+    "to-do",
+    "in-progress",
+    "await-feedback",
+    "done"
+  ];
   const currentIndex = order.indexOf(currentTask);
   const targetIndex = order.indexOf(targetTask);
-
-  return targetIndex < currentIndex ? 'rotate-180' : '';
+  if (currentIndex === -1 || targetIndex === -1) {
+    return "";
+  }
+  return targetIndex < currentIndex ? "rotate-180" : "";
 }

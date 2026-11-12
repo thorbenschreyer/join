@@ -11,9 +11,20 @@
                     <img src="./assets/icons/search_blue.png" alt="search icon active" class="search-icon search-icon-active">
                 </div>
             </div>
-            <button class="add-task-button dark-button" id="add-task" onclick="openAddTaskOverlay('to-do')">
-                <p>Add Task</p> <img class="add-plus-img" src="./assets/icons/add_light.png" alt="Add Task Plus Image">
-            </button>
+
+<button
+    class="add-task-button dark-button"
+    id="add-task"
+    onclick="openAddTaskOverlay('triage')"
+>
+    <p>Add Task</p>
+    <img
+        class="add-plus-img"
+        src="./assets/icons/add_light.png"
+        alt="Add Task Plus Image"
+    >
+</button>
+
         </div>       
     </header>
     <div class="search-task-container-mobile" id="search-task-container-mobile">
@@ -28,19 +39,41 @@
     </div>
         <div id="all-task-bars" class="all-task-bars">
 
-            <div id="request-task-bar" class="task-bar">
-                <section id="tasks-header-and-plus" class="tasks-header-and-plus">
-                    <h3 class="task-bar-heading">Triage</h3>
-                    <div id="add-request-task" class="add-task-plus-wrapper" onclick="openAddTaskOverlay('request')">
-                        <img src="./assets/icons/small_ad_task_grey.png" alt="Add Task Plus Image" class="add-task-plus">
-                        <img src="./assets/icons/small_ad_task_blue.png" alt="Add Task Plus Image Hover" class="add-task-plus-hover">
-                        <img src="./assets/icons/small_ad_task_dark.png" alt="Add Task Plus Image Active" class="add-task-plus-active">
-                    </div>
-                </section>
-                <div id="request-tasks" class="tasks-container" ondrop="movingTo(event, 'request')" ondragenter="allowDrop(event)"  ondragover="allowDrop(event)">
-                </div>
-            </div>
 
+<div id="triage-task-bar" class="task-bar">
+    <section class="tasks-header-and-plus">
+        <h3 class="task-bar-heading">Triage</h3>
+        <div
+            id="add-triage-task"
+            class="add-task-plus-wrapper"
+            onclick="openAddTaskOverlay('triage')"
+        >
+            <img
+                src="./assets/icons/small_ad_task_grey.png"
+                alt="Add Task"
+                class="add-task-plus"
+            >
+            <img
+                src="./assets/icons/small_ad_task_blue.png"
+                alt="Add Task Hover"
+                class="add-task-plus-hover"
+            >
+            <img
+                src="./assets/icons/small_ad_task_dark.png"
+                alt="Add Task Active"
+                class="add-task-plus-active"
+            >
+        </div>
+    </section>
+
+    <div
+        id="triage-tasks"
+        class="tasks-container"
+        ondrop="movingTo(event, 'triage')"
+        ondragenter="allowDrop(event)"
+        ondragover="allowDrop(event)"
+    ></div>
+</div>
 
 
 
