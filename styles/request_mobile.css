@@ -27,6 +27,30 @@
   }
 }
 
+@media (max-width: 670px) {
+  #request-dialog .dialog-card {
+    padding: 16px;
+  }
+
+  #request-dialog .mobile-login-request {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: auto;
+    margin-bottom: 12px;
+  }
+
+  #request-dialog .welcome-card {
+    margin: 0;
+  }
+
+  #request-dialog .dialog-footer {
+    margin-top: auto;
+  }
+}
+
 @media (max-width: 790px) {
   .form-content {
     width: 96%;
