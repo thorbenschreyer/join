@@ -1,21 +1,29 @@
 const textElement = document.getElementById("how-to-card");
 const numberOfRequests = document.getElementById("number-of-requests");
+const numberOfRequestsMobile = document.getElementById("number-of-requests-mobile");
 const requestColor = document.getElementById("request-color");
+const requestColorMobile = document.getElementById("request-color-mobile");
 const succsesDialog = document.getElementById("succses-request-dialog")
-let numberOfRequest = 8;
+let numberOfRequest = 10;
 
 function setRequestText() {
   if (numberOfRequest < 10) {
     numberOfRequests.innerText = numberOfRequest.toString();
+    numberOfRequestsMobile.innerText = numberOfRequest.toString();
     textElement.innerHTML = underTenRequests();
     requestColor.classList.remove("number-of-requests-not-ok");
     requestColor.classList.add("number-of-requests-ok");
+    requestColorMobile.classList.remove("number-of-requests-not-ok");
+    requestColorMobile.classList.add("number-of-requests-ok");
   } else {
     numberOfRequest = 10;
     numberOfRequests.innerText = numberOfRequest.toString();
+    numberOfRequestsMobile.innerText = numberOfRequest.toString();
     textElement.innerHTML = overTenRequests();
     requestColor.classList.remove("number-of-requests-ok");
     requestColor.classList.add("number-of-requests-not-ok");
+    requestColorMobile.classList.remove("number-of-requests-ok");
+    requestColorMobile.classList.add("number-of-requests-not-ok");
   }
 }
 

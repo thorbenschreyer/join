@@ -1,11 +1,12 @@
 function underTenRequests() {
   return `
-<div class="how-to-text">
-            <div>
+ <div class="how-to-text">
+            <div class="container-size">
               <h2 class="request-h2">
                 Easily create a ticket by sending a <br> request — no extra steps
                 needed.
               </h2>
+              <img class="request-img-mobile" src="./assets/icons/request_ok.svg" alt="" />
               <p class="request-text margin-bottom-24">
                 On this platform, you can submit your feature requests via a
                 request form. Our AI system will automatically generate a ticket
@@ -18,9 +19,11 @@ function underTenRequests() {
               </p>
             </div>
 
-            <img class="request-img" src="./assets/icons/request_ok.svg" alt="" />
+            <img class="request-img container-size" src="./assets/icons/request_ok.svg" alt="" />
           </div>
           <button class="request-button create-request-button" onclick="window.location.href='request_form.html'">Create request <img class="create-request-img" src="./assets/icons/check_light.svg" alt="" /></button>
+
+
     `;
 }
 

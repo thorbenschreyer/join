@@ -25,6 +25,19 @@
     display: none;
   }
 
+  .request-h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .request-text {
+    font-size: 16px;
+  }
+
+  .container-size {
+    width: unset;
+  }
+
   .mobile-arrow-request {
     display: block;
   }
@@ -45,7 +58,9 @@
   .request-img-mobile {
     display: block;
     margin: auto;
+    margin-bottom: 16px;
     width: 90%;
+    height: 250px;
   }
 
   .request-img {

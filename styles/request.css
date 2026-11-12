@@ -229,7 +229,7 @@ button {
 .request-h2 {
   font-family: "Open-Sans", sans-serif;
   color: rgba(66, 82, 110, 1);
-  font-size: 28;
+  font-size: 28px;
   width: 100%;
   margin-bottom: 32px;
 }
@@ -347,6 +347,10 @@ button {
 
 .request-form {
   width: 75%;
+}
+
+.container-size{
+  width: 50%;
 }
 
 .request-card-form {
