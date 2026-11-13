@@ -21,6 +21,7 @@ async function setTaskSummaryInformation() {
   let awaitingFeedback = findNumberOfTask("await-feedback");
   let todo = findNumberOfTask("to-do");
   let done = findNumberOfTask("done");
+  let triage = findNumberOfTask("triage");
 
   sortTodoforDate();
 
@@ -31,7 +32,7 @@ async function setTaskSummaryInformation() {
   document.getElementById("task-done").innerText = done;
   document.getElementById("todo-date").innerText = numberofSameDate;
   document.getElementById("date-in-Summary").innerText = formattedDate;
-  document.getElementById("requests-task-number").innerText = "5"; //TODO Implement Correctnumberof Tasks
+  document.getElementById("requests-task-number").innerText = triage;
 
   setOpticalPriority();
 }
