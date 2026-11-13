@@ -1,9 +1,11 @@
+
 const renewTasks = [
   {
     assignedTo: ["Paul Becker", "Sarah Hoffmann"],
     category: "Technical Task",
     categoryColor: "technical-task",
     currentTask: "in-progress",
+    ticketSource: "custom",
     description:
       "Implement the new authentication flow using JSON Web Tokens (JWT) for secure API requests.",
     dueDate: "2026-04-15",
@@ -22,6 +24,7 @@ const renewTasks = [
     category: "User Story",
     categoryColor: "user-story",
     currentTask: "in-progress",
+    ticketSource: "custom",
     description:
       "Refactor the global CSS variables to support a dynamic dark mode toggle across all dashboard components.",
     dueDate: "2026-04-20",
@@ -39,6 +42,7 @@ const renewTasks = [
     category: "Technical Task",
     categoryColor: "technical-task",
     currentTask: "await-feedback",
+    ticketSource: "custom",
     description:
       "Optimize database queries for the reporting module to reduce loading times for large datasets.",
     dueDate: "2026-04-12",
@@ -58,6 +62,7 @@ const renewTasks = [
     category: "Technical Task",
     categoryColor: "technical-task",
     currentTask: "await-feedback",
+    ticketSource: "custom",
     description:
       "Set up a basic CI/CD pipeline using GitHub Actions to automate testing on every pull request.",
     dueDate: "2026-04-25",
@@ -74,6 +79,7 @@ const renewTasks = [
     category: "User Story",
     categoryColor: "user-story",
     currentTask: "done",
+    ticketSource: "custom",
     description:
       "Develop a responsive mobile navigation menu that works seamlessly on all screen sizes.",
     dueDate: "2026-04-05",
@@ -92,6 +98,7 @@ const renewTasks = [
     category: "Technical Task",
     categoryColor: "technical-task",
     currentTask: "to-do",
+    ticketSource: "custom",
     description:
       "Migrate the legacy user profile data to the new schema in the production database.",
     dueDate: "2026-05-01",
@@ -109,6 +116,7 @@ const renewTasks = [
     category: "Technical Task",
     categoryColor: "technical-task",
     currentTask: "in-progress",
+    ticketSource: "custom",
     description:
       "Develop and test a script to migrate the legacy database schema to the new PostgreSQL structure efficiently.",
     dueDate: "2026-05-10",
@@ -126,7 +134,78 @@ const renewTasks = [
     ],
     title: "Database Schema Migration Script",
   },
+
+  // AI GENERATED TICKETS
+
+  {
+    assignedTo: [],
+    category: "Technical Task",
+    categoryColor: "technical-task",
+    currentTask: "triage",
+    ticketSource: "ai",
+    description:
+      "The login process occasionally fails with an HTTP 401 error even when valid credentials are provided. Investigate token validation and session handling.",
+    dueDate: "2026-11-20",
+    firebaseId: "-DemoAI00000000000001",
+    id: 8,
+    priority: "urgent",
+    sortIndex: 0,
+    subtasks: [],
+    title: "Login Authentication Error",
+  },
+  {
+    assignedTo: [],
+    category: "User Story",
+    categoryColor: "user-story",
+    currentTask: "triage",
+    ticketSource: "ai",
+    description:
+      "Users report that the Kanban board layout is not displayed correctly on smaller mobile devices. Review responsive breakpoints and card positioning.",
+    dueDate: "2026-11-25",
+    firebaseId: "-DemoAI00000000000002",
+    id: 9,
+    priority: "medium",
+    sortIndex: 1,
+    subtasks: [],
+    title: "Improve Mobile Board Layout",
+  },
+
+  // EMAIL GENERATED TICKETS
+
+  {
+    assignedTo: [],
+    category: "Technical Task",
+    categoryColor: "technical-task",
+    currentTask: "triage",
+    ticketSource: "email",
+    description:
+      "Email request: The password reset email is not being delivered to some users. Please investigate the email delivery configuration.",
+    dueDate: "2026-11-22",
+    firebaseId: "-DemoMail000000000001",
+    id: 10,
+    priority: "medium",
+    sortIndex: 2,
+    subtasks: [],
+    title: "Password Reset Email Issue",
+  },
+  {
+    assignedTo: [],
+    category: "User Story",
+    categoryColor: "user-story",
+    currentTask: "triage",
+    ticketSource: "email",
+    description:
+      "Email request: Please add a notification when a task is assigned to a team member or moved to another Kanban column.",
+    dueDate: "2026-11-30",
+    firebaseId: "-DemoMail000000000002",
+    id: 11,
+    priority: "low",
+    sortIndex: 3,
+    subtasks: [],
+    title: "Task Assignment Notifications",
+  },
 ];
+
 
 async function fetchLastResetDate() {
   const url = `${BASE_URL}appState/lastResetDate.json`;

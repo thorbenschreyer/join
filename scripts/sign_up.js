@@ -1,7 +1,7 @@
 /**
  * FIREBASE BACKEND POINT
  */
-const BASE_URL = "https://join-3125-default-rtdb.europe-west1.firebasedatabase.app/"
+const BASE_URL = "https://join-ki-ts-default-rtdb.europe-west1.firebasedatabase.app/"
 
 /**
  * REGEX PATTERNS

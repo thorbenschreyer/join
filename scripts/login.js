@@ -1,5 +1,5 @@
 const fireBaseUrl =
-  "https://join-3125-default-rtdb.europe-west1.firebasedatabase.app/";
+  "https://join-ki-ts-default-rtdb.europe-west1.firebasedatabase.app/";
 const emailData = document.getElementById("email-input-login");
 const passwordData = document.getElementById("password-input-login");
 const inputImg = document.getElementById("input-password-img");
