@@ -61,15 +61,42 @@ function checkRequestValidity() {
   errorMessage.textContent = error || "";
 }
 
-function sendRequest(event) {
+
+async function sendRequest(event) {
   event.preventDefault();
 
   const request = {
-    name: document.getElementById("request-name").value,
-    email: document.getElementById("request-email").value,
-    subject: document.getElementById("request-subject").value,
-    text: document.getElementById("request-text").value,
+    name: document.getElementById("request-name").value.trim(),
+    email: document.getElementById("request-email").value.trim(),
+    subject: document.getElementById("request-subject").value.trim(),
+    text: document.getElementById("request-text").value.trim(),
   };
 
-  succsesDialog.showModal()
+  const webhookUrl = "http://localhost:5678/webhook-test/contact-request";
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    });
+
+    if (!response.ok) {
+      throw new Error("Webhook konnte nicht erreicht werden.");
+    }
+
+    const result = await response.json();
+
+    if (result.success !== true) {
+      throw new Error("Anfrage wurde nicht bestätigt.");
+    }
+
+    succsesDialog.showModal();
+
+  } catch (error) {
+    console.error("Fehler beim Senden:", error);
+    alert("Deine Anfrage konnte nicht gesendet werden.");
+  }
 }
