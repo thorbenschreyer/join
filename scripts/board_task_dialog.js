@@ -1,5 +1,3 @@
-let generatedAt = "ai"; // TODO - remove after test
-
 /**
  * Opens the task details dialog for the specified task.
  * @param {string} id - The task ID.
@@ -25,12 +23,12 @@ function renderTaskDialog(task) {
   const mailContainer = document.getElementById("mail-generated"); 
   const memberContainer = document.getElementById("member-generated"); 
 
-  if (generatedAt === "ai")  { //TODO task.zugehöriges
+  if (task.ticketSource === "ai")  { //TODO task.zugehöriges
     aiContainer.classList.remove("dont-show-in-card"); 
     memberContainer.classList.add("dont-show-in-card");
-  } else if (generatedAt === "mail") { //TODO task.zugehöriges
+  } else if (task.ticketSource === "email") { //TODO task.zugehöriges
     memberContainer.classList.add("dont-show-in-card");
-  } else if (generatedAt === "member") { //TODO task.zugehöriges
+  } else if (task.ticketSource === "custom") { //TODO task.zugehöriges
     mailContainer.classList.add("dont-show-in-card");
   }
 }

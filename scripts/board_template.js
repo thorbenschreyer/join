@@ -135,12 +135,12 @@ function renderDialogTask(task) {
       
       <div id="member-generated" class="member-generated">
       <span class="creator-label member-color noDesktop"><img class="creator-label-img" src="./assets/icons/member-generated.svg" alt="">Member</span>
-      <div class="mobileHandler"> <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label member-color noMobile"><img class="creator-label-img" src="./assets/icons/member-generated.svg" alt="">Member</span><span class="creator-name">Tatjana Wolf</span> <p class="comes-from"><img src="./assets/icons/member-profil.svg" alt="">Profil</p></div>
+      <div class="mobileHandler"> <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label member-color noMobile"><img class="creator-label-img" src="./assets/icons/member-generated.svg" alt="">Member</span><span class="creator-name">${task.createdBy}</span> <p class="comes-from"><img src="./assets/icons/member-profil.svg" alt="">Profil</p></div>
         </div>
 
         <div id="mail-generated" class="mail-generated">
          <p class="creator-label mail-color noDesktop"><img class="creator-label-img" src="./assets/icons/extern-request.png" alt="">Extern</p> 
-     <div class="mobileHandler">  <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label mail-color noMobile"><img class="creator-label-img" src="./assets/icons/extern-request.png" alt="">Extern</span><span class="creator-name" >Externer Name</span> <p class="comes-from"><img class="comes-from-img" src="./assets/icons/extern-email.png" alt="">E-mail</p></div>
+     <div class="mobileHandler">  <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label mail-color noMobile"><img class="creator-label-img" src="./assets/icons/extern-request.png" alt="">Extern</span><span class="creator-name" >${task.createdBy}</span> <p class="comes-from"><img class="comes-from-img" src="./assets/icons/extern-email.png" alt="">E-mail</p></div>
         </div>
       <div id="dialog-due-date" class="dialog-due-date">
         <p class="fix-width-120px">Due date:</p>
