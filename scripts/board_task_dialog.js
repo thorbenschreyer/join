@@ -1,3 +1,5 @@
+let generatedAt = "member"; // TODO - remove after test
+
 /**
  * Opens the task details dialog for the specified task.
  * @param {string} id - The task ID.
@@ -19,6 +21,18 @@ function openTaskDetails(id) {
 function renderTaskDialog(task) {
   const dialogContainer = document.getElementById("task-dialog");
   dialogContainer.innerHTML = renderDialogTask(task);
+  const aiContainer = document.getElementById("ai-generated"); 
+  const mailContainer = document.getElementById("mail-generated"); 
+  const memberContainer = document.getElementById("member-generated"); 
+
+  if (generatedAt === "ai")  { //TODO task.zugehöriges
+    aiContainer.classList.remove("dont-show-in-card"); 
+    memberContainer.classList.add("dont-show-in-card");
+  } else if (generatedAt === "mail") { //TODO task.zugehöriges
+    memberContainer.classList.add("dont-show-in-card");
+  } else if (generatedAt === "member") { //TODO task.zugehöriges
+    mailContainer.classList.add("dont-show-in-card");
+  }
 }
 
 /**

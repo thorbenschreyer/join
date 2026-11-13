@@ -90,53 +90,133 @@ function renderNameBadges(initials, badgeColor) {
  */
 function renderDialogTask(task) {
   return `
-  <div id="dialog-board-task" class="dialog-board-task">
-    <div id="dialog-task-category-and-close-x-container" class="dialog-task-category-and-close-x-container">
-      <p id="dialog-task-category" class="dialog-task-category-${task.categoryColor}">${task.category}</p>
-      <div onclick="closeOverlay('task')" id="close-dialog-x-wrapper" class="close-dialog-x-wrapper">
-        <img src="./assets/icons/close.png" alt="Close Dialog" class="close-dialog-x-default">
-        <img src="./assets/icons/close_hover_light.png" alt="Close Dialog" class="close-dialog-x-hover">
-        <img src="./assets/icons/close_hover_blue.png" alt="Close Dialog" class="close-dialog-x-active">
-      </div>
-    </div>
-    <h3  id="dialog-task-title" class="dialog-task-title">${task.title}</h3>
-    <p id="dialog-task-description" class="dialog-task-description">${task.description}</p>
-    <div id="dialog-due-date" class="dialog-due-date">
-      <p class="fix-width-120px">Due date:</p>
-      <p>${task.dueDate}</p>
-    </div>
-    <div id="dialog-task-priority" class="dialog-task-priority">
-      <p class="fix-width-120px">Priority:</p>
-      <div id="dialog-priority-container" class="dialog-priority-container">
-        <p>${task.priority}</p>
-        <img id="task-prio" class="dialog-task-prio-img" src="./assets/icons/${task.priority.toLowerCase()}_prio_color.png" alt="${task.priority} priority Image">
-      </div>
-    </div id="dialog-assigned-to">
-      <p class="fix-width-120px dialog-assigned-to-heading" id="dialog-assigned-to-heading">Assigned To:</p>
-      <div id="dialog-task-user-badges" class="dialog-task-user-badges">
-    </div>
-    <div id="dialog-task-subtasks" class="dialog-task-subtasks">
-      <p id="dialog-task-subtasks-header" class="dialog-task-subtasks-header">Subtasks:</p>
-      <div id="dialog-task-subtask-container" class="dialog-task-subtask-container">
-      </div>
-    </div>
-    <div class="dialog-delete-edit-container"> 
-      <div class="dialog-delete-container" onclick="deleteTask(${task.id})">
-        <div class="dialog-delete-img-wrapper">
-          <img src="./assets/icons/delete.png" alt="delete Task" class="dialog-delete-img img-size-24px">
-          <img src="./assets/icons/delete_blue.png" alt="delete Task" class="dialog-delete-hover-img img-size-24px">
+        <div id="dialog-board-task" class="dialog-board-task">
+      <div
+        id="dialog-task-category-and-close-x-container"
+        class="dialog-task-category-and-close-x-container"
+      >
+        <p
+          id="dialog-task-category"
+          class="dialog-task-category-${task.categoryColor}"
+        >
+          ${task.category}
+        </p>
+        <div class="ai-card">
+        <span id="ai-generated" class="ai-card-text dont-show-in-card"><img class="ai-card-img" src="./assets/icons/wand_stars.svg" alt="">Ai-generated ticket</span>
+        <div
+          onclick="closeOverlay('task')"
+          id="close-dialog-x-wrapper"
+          class="close-dialog-x-wrapper"
+        >
+          <img
+            src="./assets/icons/close.png"
+            alt="Close Dialog"
+            class="close-dialog-x-default"
+          />
+          <img
+            src="./assets/icons/close_hover_light.png"
+            alt="Close Dialog"
+            class="close-dialog-x-hover"
+          />
+          <img
+            src="./assets/icons/close_hover_blue.png"
+            alt="Close Dialog"
+            class="close-dialog-x-active"
+          />
         </div>
-        <p class="dialog-delete-edit">Delete</p>
-      </div>
-      <div class="dialog-edit-container" onclick="openEditMode(${task.id})">
-        <div class="dialog-edit-img-wrapper">
-          <img src="./assets/icons/edit.png" alt="delete Task" class="dialog-edit-img img-size-24px">
-          <img src="./assets/icons/edit_blue.png" alt="delete Task" class="dialog-edit-hover-img img-size-24px">
         </div>
-        <p class="dialog-delete-edit">Edit</p>
+      </div>
+
+      <h3 id="dialog-task-title" class="dialog-task-title">${task.title}</h3>
+
+      <p id="dialog-task-description" class="dialog-task-description">
+        ${task.description}
+      </p>
+        <div id="member-generated" class="member-generated">
+      <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label"><img class="creator-label-img" src="./assets/icons/member-generated.svg" alt="">Member</span><span class="creator-name">Tatjana Wolf</span> <p class="comes-from"><img src="./assets/icons/member-profil.svg" alt="">Profil</p>
+        </div>
+
+        <div id="mail-generated" class="mail-generated">
+      <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label"><img class="creator-label-img" src="./assets/icons/extern-request.png" alt="">Extern</span><span class="creator-name" >Externer Name</span> <p class="comes-from"><img class="comes-from-img" src="./assets/icons/extern-email.png" alt="">E-mail</p>
+        </div>
+      <div id="dialog-due-date" class="dialog-due-date">
+        <p class="fix-width-120px">Due date:</p>
+        <p>${task.dueDate}</p>
+      </div>
+
+      <div id="dialog-task-priority" class="dialog-task-priority">
+        <p class="fix-width-120px">Priority:</p>
+
+        <div id="dialog-priority-container" class="dialog-priority-container">
+          <p>${task.priority}</p>
+          <img
+            id="task-prio"
+            class="dialog-task-prio-img"
+            src="./assets/icons/${task.priority.toLowerCase()}_prio_color.png"
+            alt="${task.priority} priority Image"
+          />
+        </div>
+      </div>
+
+      <!-- ASSIGNED TO -->
+      <div id="dialog-assigned-to">
+        <p
+          class="fix-width-120px dialog-assigned-to-heading"
+          id="dialog-assigned-to-heading"
+        >
+          Assigned To:
+        </p>
+
+        <div id="dialog-task-user-badges" class="dialog-task-user-badges"></div>
+      </div>
+
+      <!-- SUBTASKS -->
+      <div id="dialog-task-subtasks" class="dialog-task-subtasks">
+        <p id="dialog-task-subtasks-header" class="dialog-task-subtasks-header">
+          Subtasks:
+        </p>
+
+        <div
+          id="dialog-task-subtask-container"
+          class="dialog-task-subtask-container"
+        ></div>
+      </div>
+
+      <!-- DELETE AND EDIT -->
+      <div class="dialog-delete-edit-container">
+        <div class="dialog-delete-container" onclick="deleteTask(${task.id})">
+          <div class="dialog-delete-img-wrapper">
+            <img
+              src="./assets/icons/delete.png"
+              alt="delete Task"
+              class="dialog-delete-img img-size-24px"
+            />
+            <img
+              src="./assets/icons/delete_blue.png"
+              alt="delete Task"
+              class="dialog-delete-hover-img img-size-24px"
+            />
+          </div>
+          <p class="dialog-delete-edit">Delete</p>
+        </div>
+
+        <div class="dialog-edit-container" onclick="openEditMode(${task.id})">
+          <div class="dialog-edit-img-wrapper">
+            <img
+              src="./assets/icons/edit.png"
+              alt="edit Task"
+              class="dialog-edit-img img-size-24px"
+            />
+            <img
+              src="./assets/icons/edit_blue.png"
+              alt="edit Task"
+              class="dialog-edit-hover-img img-size-24px"
+            />
+          </div>
+          <p class="dialog-delete-edit">Edit</p>
+        </div>
       </div>
     </div>
-  </div>
   `;
 }
 
