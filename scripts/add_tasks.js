@@ -320,6 +320,7 @@ function clearFormular() {
  * @return {Object} The task object containing all relevant fields for storage and display.
  */
 function buildTaskObject() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     return {
         id: generateUniqueId(),
         title: document.getElementById("task-title-input").value,
@@ -331,7 +332,10 @@ function buildTaskObject() {
         categoryColor: document.getElementById("task-category-input").value.trim().toLowerCase().split(' ').join('-'),
         subtasks: getFormattedSubtasks(),
         currentTask: "triage",    
-        ticketSource: "custom"};
+        ticketSource: "custom",
+        createdBy: currentUser.name,
+        createdByEmail: currentUser.email,
+    };
 }
 
 /**
