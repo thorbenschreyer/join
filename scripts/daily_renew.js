@@ -1,4 +1,5 @@
 
+
 const renewTasks = [
   {
     assignedTo: ["Paul Becker", "Sarah Hoffmann"],
@@ -6,6 +7,8 @@ const renewTasks = [
     categoryColor: "technical-task",
     currentTask: "in-progress",
     ticketSource: "custom",
+    createdBy: "Paul Becker",
+    createdByEmail: "paul.becker@gmail.com",
     description:
       "Implement the new authentication flow using JSON Web Tokens (JWT) for secure API requests.",
     dueDate: "2026-04-15",
@@ -25,6 +28,8 @@ const renewTasks = [
     categoryColor: "user-story",
     currentTask: "in-progress",
     ticketSource: "custom",
+    createdBy: "Daniel Klein",
+    createdByEmail: "daniel.klein@gmail.com",
     description:
       "Refactor the global CSS variables to support a dynamic dark mode toggle across all dashboard components.",
     dueDate: "2026-04-20",
@@ -43,6 +48,8 @@ const renewTasks = [
     categoryColor: "technical-task",
     currentTask: "await-feedback",
     ticketSource: "custom",
+    createdBy: "Nina Schulz",
+    createdByEmail: "nina.schulz@gmail.com",
     description:
       "Optimize database queries for the reporting module to reduce loading times for large datasets.",
     dueDate: "2026-04-12",
@@ -63,6 +70,8 @@ const renewTasks = [
     categoryColor: "technical-task",
     currentTask: "await-feedback",
     ticketSource: "custom",
+    createdBy: "Lea Bauer",
+    createdByEmail: "lea.bauer@gmail.com",
     description:
       "Set up a basic CI/CD pipeline using GitHub Actions to automate testing on every pull request.",
     dueDate: "2026-04-25",
@@ -80,6 +89,8 @@ const renewTasks = [
     categoryColor: "user-story",
     currentTask: "done",
     ticketSource: "custom",
+    createdBy: "Emma Krüger",
+    createdByEmail: "emma.krueger@gmail.com",
     description:
       "Develop a responsive mobile navigation menu that works seamlessly on all screen sizes.",
     dueDate: "2026-04-05",
@@ -99,6 +110,8 @@ const renewTasks = [
     categoryColor: "technical-task",
     currentTask: "to-do",
     ticketSource: "custom",
+    createdBy: "Lukas Meier",
+    createdByEmail: "lukas.meier@gmail.com",
     description:
       "Migrate the legacy user profile data to the new schema in the production database.",
     dueDate: "2026-05-01",
@@ -112,11 +125,20 @@ const renewTasks = [
     title: "Database Migration",
   },
   {
-    assignedTo: ["Paul Becker", "Sarah Hoffmann", "Daniel Klein", "Nina Schulz", "Felix Wagner", "Lea Bauer"],
+    assignedTo: [
+      "Paul Becker",
+      "Sarah Hoffmann",
+      "Daniel Klein",
+      "Nina Schulz",
+      "Felix Wagner",
+      "Lea Bauer"
+    ],
     category: "Technical Task",
     categoryColor: "technical-task",
     currentTask: "in-progress",
     ticketSource: "custom",
+    createdBy: "Sarah Hoffmann",
+    createdByEmail: "sarah.hoffmann@gmail.com",
     description:
       "Develop and test a script to migrate the legacy database schema to the new PostgreSQL structure efficiently.",
     dueDate: "2026-05-10",
@@ -143,6 +165,8 @@ const renewTasks = [
     categoryColor: "technical-task",
     currentTask: "triage",
     ticketSource: "ai",
+    createdBy: "Max Mustermann",
+    createdByEmail: "max.mustermann@example.com",
     description:
       "The login process occasionally fails with an HTTP 401 error even when valid credentials are provided. Investigate token validation and session handling.",
     dueDate: "2026-11-20",
@@ -159,6 +183,8 @@ const renewTasks = [
     categoryColor: "user-story",
     currentTask: "triage",
     ticketSource: "ai",
+    createdBy: "Laura Schneider",
+    createdByEmail: "laura.schneider@example.com",
     description:
       "Users report that the Kanban board layout is not displayed correctly on smaller mobile devices. Review responsive breakpoints and card positioning.",
     dueDate: "2026-11-25",
@@ -178,6 +204,8 @@ const renewTasks = [
     categoryColor: "technical-task",
     currentTask: "triage",
     ticketSource: "email",
+    createdBy: "Michael Weber",
+    createdByEmail: "michael.weber@example.com",
     description:
       "Email request: The password reset email is not being delivered to some users. Please investigate the email delivery configuration.",
     dueDate: "2026-11-22",
@@ -194,6 +222,8 @@ const renewTasks = [
     categoryColor: "user-story",
     currentTask: "triage",
     ticketSource: "email",
+    createdBy: "Julia Fischer",
+    createdByEmail: "julia.fischer@example.com",
     description:
       "Email request: Please add a notification when a task is assigned to a team member or moved to another Kanban column.",
     dueDate: "2026-11-30",
@@ -205,6 +235,7 @@ const renewTasks = [
     title: "Task Assignment Notifications",
   },
 ];
+
 
 
 async function fetchLastResetDate() {
