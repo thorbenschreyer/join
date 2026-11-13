@@ -1,4 +1,4 @@
-let generatedAt = "member"; // TODO - remove after test
+let generatedAt = "ai"; // TODO - remove after test
 
 /**
  * Opens the task details dialog for the specified task.

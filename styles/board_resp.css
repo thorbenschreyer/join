@@ -38,7 +38,8 @@
 }
 
 .move-to-btn:hover .move-to-img {
-  filter: brightness(0) saturate(100%) invert(59%) sepia(61%) saturate(2003%) hue-rotate(166deg) brightness(96%) contrast(92%);
+  filter: brightness(0) saturate(100%) invert(59%) sepia(61%) saturate(2003%)
+    hue-rotate(166deg) brightness(96%) contrast(92%);
 }
 
 .move-to-btn:active {
@@ -46,7 +47,7 @@
 }
 
 .move-to-btn:active .move-to-img {
-  filter: none; 
+  filter: none;
 }
 
 .move-to-img {
@@ -133,8 +134,8 @@
   }
 
   .board-small-task.dropdown-open {
-  z-index: 10;
-}
+    z-index: 10;
+  }
 
   .move-to-btn {
     display: flex;
@@ -208,10 +209,10 @@
   }
 
   .add-task-header-mobile-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .add-task-dialog {
@@ -238,7 +239,6 @@
   .close-add-task-dialog-x-wrapper {
     opacity: 0;
   }
-
 }
 
 @media (min-width: 1051px) {
@@ -248,6 +248,33 @@
 }
 
 @media (max-width: 818px) {
+  .noMobile {
+    display: none;
+  }
+
+  .noDesktop {
+    display: inline-flex;
+    margin-bottom: 4px;
+  }
+
+  .member-generated {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .removeInMobile {
+    display: none;
+  }
+
+  .mail-generated {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+  }
+
   .dialog-footer-left {
     display: none;
   }
@@ -259,6 +286,10 @@
 
   .add-task-dialog {
     padding-top: 24px;
+  }
+
+  .dont-show-in-card {
+    display: none;
   }
 }
 
@@ -277,7 +308,27 @@
 }
 
 @media (max-width: 410px) {
+  .dont-show-in-card {
+    display: none;
+  }
+
   .edit-subtask-text {
-  max-width: 145px;
-}
+    max-width: 145px;
+  }
+
+  .crator-text {
+    font-size: 16px;
+  }
+
+  .creator-name {
+    font-size: 16px;
+  }
+
+  .mobileHandler {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    row-gap: 4px;
+  }
 }

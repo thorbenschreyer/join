@@ -102,7 +102,7 @@ function renderDialogTask(task) {
           ${task.category}
         </p>
         <div class="ai-card">
-        <span id="ai-generated" class="ai-card-text dont-show-in-card"><img class="ai-card-img" src="./assets/icons/wand_stars.svg" alt="">Ai-generated ticket</span>
+        <span id="ai-generated" class="ai-card-text dont-show-in-card"><img class="ai-card-img" src="./assets/icons/wand_stars.svg" alt=""><span class="removeInMobile"> Ai-generated ticket</span></span>
         <div
           onclick="closeOverlay('task')"
           id="close-dialog-x-wrapper"
@@ -132,12 +132,15 @@ function renderDialogTask(task) {
       <p id="dialog-task-description" class="dialog-task-description">
         ${task.description}
       </p>
-        <div id="member-generated" class="member-generated">
-      <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label"><img class="creator-label-img" src="./assets/icons/member-generated.svg" alt="">Member</span><span class="creator-name">Tatjana Wolf</span> <p class="comes-from"><img src="./assets/icons/member-profil.svg" alt="">Profil</p>
+      
+      <div id="member-generated" class="member-generated">
+      <span class="creator-label member-color noDesktop"><img class="creator-label-img" src="./assets/icons/member-generated.svg" alt="">Member</span>
+      <div class="mobileHandler"> <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label member-color noMobile"><img class="creator-label-img" src="./assets/icons/member-generated.svg" alt="">Member</span><span class="creator-name">Tatjana Wolf</span> <p class="comes-from"><img src="./assets/icons/member-profil.svg" alt="">Profil</p></div>
         </div>
 
         <div id="mail-generated" class="mail-generated">
-      <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label"><img class="creator-label-img" src="./assets/icons/extern-request.png" alt="">Extern</span><span class="creator-name" >Externer Name</span> <p class="comes-from"><img class="comes-from-img" src="./assets/icons/extern-email.png" alt="">E-mail</p>
+         <p class="creator-label mail-color noDesktop"><img class="creator-label-img" src="./assets/icons/extern-request.png" alt="">Extern</p> 
+     <div class="mobileHandler">  <p class="generated-container"><span class="crator-text">Creator:</span> <span class="creator-label mail-color noMobile"><img class="creator-label-img" src="./assets/icons/extern-request.png" alt="">Extern</span><span class="creator-name" >Externer Name</span> <p class="comes-from"><img class="comes-from-img" src="./assets/icons/extern-email.png" alt="">E-mail</p></div>
         </div>
       <div id="dialog-due-date" class="dialog-due-date">
         <p class="fix-width-120px">Due date:</p>
