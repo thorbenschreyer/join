@@ -330,7 +330,8 @@ function buildTaskObject() {
         category: document.getElementById("task-category-input").value,
         categoryColor: document.getElementById("task-category-input").value.trim().toLowerCase().split(' ').join('-'),
         subtasks: getFormattedSubtasks(),
-        currentTask: "triage"    };
+        currentTask: "triage",    
+        ticketSource: "custom"};
 }
 
 /**
