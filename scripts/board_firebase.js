@@ -1,12 +1,32 @@
-
 /**
- * Updates the task category in Firebase.
+ * Updates the task status in Firebase and notifies n8n.
  * @param {string} firebaseId - Firebase task ID.
- * @param {string} newCategory - Target category.
+ * @param {string} newCategory - New Kanban status.
  */
 async function updateFirebaseCategory(firebaseId, newCategory) {
   const url = `${BASE_URL}tasks/${firebaseId}.json`;
 
+  // 1. Load current ticket
+  const taskResponse = await fetch(url);
+
+  if (!taskResponse.ok) {
+    throw new Error(`Firebase read failed: ${taskResponse.status}`);
+  }
+
+  const task = await taskResponse.json();
+
+  if (!task) {
+    throw new Error("Ticket not found");
+  }
+
+  const oldCategory = task.currentTask;
+
+  // 2. No notification if status is unchanged
+  if (oldCategory === newCategory) {
+    return task;
+  }
+
+  // 3. Save new status in Firebase
   const response = await fetch(url, {
     method: "PATCH",
     headers: {
@@ -18,14 +38,44 @@ async function updateFirebaseCategory(firebaseId, newCategory) {
   });
 
   if (!response.ok) {
-    throw new Error(
-      `Firebase update failed: ${response.status}`
-    );
+    throw new Error(`Firebase update failed: ${response.status}`);
   }
 
-  return await response.json();
-}
+  const result = await response.json();
 
+  // 4. Notify n8n after successful update
+  const webhookUrl = "http://localhost:5678/webhook/join-ticket-status";
+
+  const payload = {
+    firebaseId: firebaseId,
+    ticketId: task.id,
+    title: task.title,
+    createdBy: task.createdBy,
+    createdByEmail: task.createdByEmail,
+    oldStatus: oldCategory,
+    newStatus: newCategory,
+  };
+
+  try {
+    const notificationResponse = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!notificationResponse.ok) {
+      throw new Error(
+        `n8n notification failed: ${notificationResponse.status}`,
+      );
+    }
+  } catch (error) {
+    console.error("Ticket updated, but n8n notification failed:", error);
+  }
+
+  return result;
+}
 
 /**
  * Updates the subtask state in Firebase.
