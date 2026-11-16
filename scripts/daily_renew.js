@@ -236,84 +236,6 @@ const renewTasks = [
   },
 ];
 
-
-
-async function fetchLastResetDate() {
-  const url = `${BASE_URL}appState/lastResetDate.json`;
-  const response = await fetch(url);
-  if (response.ok) {
-    return await response.json();
-  }
-  return null;
-}
-
-async function updateLastResetDate(dateString) {
-  const url = `${BASE_URL}appState/lastResetDate.json`;
-  const payload = JSON.stringify(dateString);
-  await fetch(url, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: payload,
-  });
-}
-
-async function checkIfToday() {
-  const now = new Date();
-  const offset = now.getTimezoneOffset() * 60000;
-  const todayDateString = new Date(now.getTime() - offset)
-    .toISOString()
-    .split("T")[0];
-
-  const savedDate = await fetchLastResetDate();
-
-  if (todayDateString !== savedDate) {
-    await startNewDay(todayDateString);
-  }
-}
-
-async function startNewDay(dateString) {
-  await resetDataInFirebase("tasks", renewTasks, "firebaseId");
-  await resetDataInFirebase("users", renewUsers);
-
-  await updateLastResetDate(dateString);
-
-  tasks = [...renewTasks];
-  users = [...renewUsers];
-
-  sortTodoforDate();
-  setTaskSummaryInformation();
-}
-
-async function resetDataInFirebase(path, dataArray, keyField = null) {
-  const url = `${BASE_URL}${path}.json`;
-
-  let dataObject = {};
-
-  for (let i = 0; i < dataArray.length; i++) {
-    const item = dataArray[i];
-    if (keyField && item[keyField]) {
-      dataObject[item[keyField]] = item;
-    } else {
-      const generatedKey = generateFirebaseLikeId();
-      dataObject[generatedKey] = item;
-    }
-  }
-
-  const payload = JSON.stringify(dataObject);
-
-  await fetch(url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: payload,
-  });
-}
-
-function generateFirebaseLikeId() {
-  return "-" + Math.random().toString(36).substr(2, 20);
-}
-
 const renewUsers = [
   {
     avatarColor: "rgba(255, 99, 132, 1)",
@@ -456,3 +378,126 @@ const renewUsers = [
     phone: "0176 44556677",
   },
 ];
+
+
+
+/**
+ * Writes data to Firebase Realtime Database.
+ */
+async function writeFirebaseValue(path, value) {
+  const response = await fetch(`${BASE_URL}${path}.json`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(value)
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Firebase write failed (${path}): ${response.status}`
+    );
+  }
+}
+
+/**
+ * Reads the date of the last daily reset.
+ */
+async function fetchLastResetDate() {
+  const response = await fetch(
+    `${BASE_URL}appState/lastResetDate.json`
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Could not read last reset date: ${response.status}`
+    );
+  }
+
+  return await response.json();
+}
+
+/**
+ * Saves the date of the last successful reset.
+ */
+async function updateLastResetDate(dateString) {
+  await writeFirebaseValue(
+    "appState/lastResetDate",
+    dateString
+  );
+}
+
+/**
+ * Checks whether the demo data must be reset.
+ */
+async function checkIfToday() {
+  const now = new Date();
+
+  const offset = now.getTimezoneOffset() * 60000;
+
+  const todayDateString = new Date(
+    now.getTime() - offset
+  ).toISOString().split("T")[0];
+
+  const savedDate = await fetchLastResetDate();
+
+  if (todayDateString !== savedDate) {
+    await startNewDay(todayDateString);
+  }
+}
+
+/**
+ * Resets the Join demo environment.
+ *
+ * Restores demo tickets and users,
+ * resets the ticket counter,
+ * and updates the reset date.
+ */
+async function startNewDay(dateString) {
+  await writeFirebaseValue(
+    "appState/resetInProgress", true);
+  try {await resetDataInFirebase("tasks",renewTasks,"firebaseId");
+    await resetDataInFirebase(
+      "users",
+      renewUsers
+    );
+    const highestId = Math.max(...renewTasks.map(task => task.id));
+    await writeFirebaseValue("taskCounter", highestId );
+    await updateLastResetDate(dateString);
+    tasks = [...renewTasks];
+    users = [...renewUsers];
+    sortTodoforDate();
+    setTaskSummaryInformation();
+  } finally {await writeFirebaseValue("appState/resetInProgress", false);
+  }
+}
+
+/**
+ * Replaces a Firebase collection with demo data.
+ */
+async function resetDataInFirebase(
+  path,
+  dataArray,
+  keyField = null
+) {
+  const dataObject = {};
+
+  for (const item of dataArray) {
+    const key = keyField && item[keyField]
+      ? item[keyField]
+      : generateFirebaseLikeId();
+
+    dataObject[key] = item;
+  }
+
+  await writeFirebaseValue(path, dataObject);
+}
+
+/**
+ * Generates a temporary Firebase-like key
+ * for demo data without an existing key.
+ */
+function generateFirebaseLikeId() {
+  return "-" +
+    Math.random().toString(36).substring(2, 22);
+}
