@@ -4,7 +4,17 @@ const numberOfRequestsMobile = document.getElementById("number-of-requests-mobil
 const requestColor = document.getElementById("request-color");
 const requestColorMobile = document.getElementById("request-color-mobile");
 const succsesDialog = document.getElementById("succses-request-dialog")
-let numberOfRequest = 10;
+let numberOfRequest = 0;
+
+async function loadAiUsage() {
+  try {
+    const response = await fetch("http://localhost:5678/webhook/join-ai-usage");
+    if (!response.ok) {throw new Error("KI-Zähler konnte nicht geladen werden");}
+    const data = await response.json();
+    numberOfRequest = Math.min(10, Math.max(0, Number(data.used) || 0));
+    setRequestText();
+  } catch (error) {console.error("Fehler beim Laden des KI-Zählers:", error);}
+}
 
 function setRequestText() {
   if (numberOfRequest < 10) {
@@ -26,6 +36,9 @@ function setRequestText() {
     requestColorMobile.classList.add("number-of-requests-not-ok");
   }
 }
+
+// Call this after the page elements have been initialized.
+loadAiUsage();
 
 function validateRequest(name, email, subject, text) {
   const nameRegex = /^[A-Za-zÄÖÜäöüß\s'-]+$/;
@@ -72,7 +85,7 @@ async function sendRequest(event) {
     text: document.getElementById("request-text").value.trim(),
   };
 
-  const webhookUrl = "http://localhost:5678/webhook-test/contact-request";
+  const webhookUrl = "http://localhost:5678/webhook/contact-request";
 
   try {
     const response = await fetch(webhookUrl, {
