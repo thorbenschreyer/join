@@ -1,0 +1,72 @@
+{
+  "name": "Information status change",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "join-ticket-status",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a1383166-5714-4db7-a10f-80cdd13a262f",
+      "name": "JOIN - Ticket Status Notification1",
+      "webhookId": "e21abf0e-6b23-4ce3-ad60-29a7c918d214"
+    },
+    {
+      "parameters": {
+        "fromEmail": "join@thorben-schreyer.de",
+        "toEmail": "={{ $json.body.createdByEmail }}",
+        "subject": "=JOIN #{{ $json.body.ticketId }} – Status aktualisiert",
+        "html": "=\n<table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"\n  style=\"background-color:#f3f5f8;border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;\">\n  <tr>\n    <td align=\"center\" style=\"padding:32px 12px;\">\n\n      <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\"\n        style=\"width:100%;max-width:600px;background-color:#ffffff;border-collapse:collapse;\">\n\n        <!-- HEADER -->\n        <tr>\n          <td style=\"background-color:#2a3647;padding:30px 32px;\">\n            <div style=\"font-size:30px;font-weight:800;color:#ffffff;\">\n              JOIN<span style=\"color:#29abe2;\">.</span>\n            </div>\n            <div style=\"font-size:13px;color:#c5cfda;margin-top:6px;\">\n              Kanban Board | Ticket Management\n            </div>\n          </td>\n        </tr>\n\n        <!-- CONTENT -->\n        <tr>\n          <td style=\"padding:36px 32px 28px;color:#2a3647;\">\n\n            <div style=\"font-size:12px;font-weight:700;letter-spacing:1px;color:#1689b9;margin-bottom:12px;\">\n              TICKET-STATUS AKTUALISIERT\n            </div>\n\n            <h1 style=\"font-size:25px;line-height:32px;margin:0 0 24px;\">\n              Dein Ticket wurde aktualisiert!\n            </h1>\n\n            <p style=\"font-size:15px;line-height:25px;\">\n              Hallo {{ String($json.body.createdBy ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c])) }},\n            </p>\n\n            <p style=\"font-size:15px;line-height:25px;\">\n              der Bearbeitungsstatus deiner Anfrage hat sich geändert.\n              Hier findest du die aktuellen Informationen.\n            </p>\n\n            <!-- TICKET -->\n            <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"\n              style=\"background-color:#f5f8fb;border-left:4px solid #29abe2;border-collapse:collapse;margin:26px 0;\">\n              <tr>\n                <td style=\"padding:20px 22px;\">\n\n                  <div style=\"font-size:11px;font-weight:700;color:#697789;margin-bottom:8px;\">\n                    DEIN TICKET\n                  </div>\n\n                  <div style=\"font-size:22px;font-weight:700;color:#2a3647;margin-bottom:10px;\">\n                    #{{ $json.body.ticketId }}\n                  </div>\n\n                  <div style=\"font-size:16px;font-weight:600;color:#2a3647;line-height:24px;\">\n                    {{ String($json.body.title ?? '').replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c])) }}\n                  </div>\n\n                </td>\n              </tr>\n            </table>\n\n            <!-- STATUS -->\n            <h2 style=\"font-size:17px;margin:28px 0 14px;\">\n              Neuer Bearbeitungsstatus\n            </h2>\n\n            <div style=\"background-color:#eaf6fc;border-left:4px solid #29abe2;padding:18px 20px;margin-bottom:18px;\">\n              <div style=\"font-size:18px;font-weight:700;color:#1689b9;\">\n                {{ ({triage:'Eingangsprüfung',toDo:'Zur Bearbeitung eingeplant',todo:'Zur Bearbeitung eingeplant',inProgress:'In Bearbeitung',awaitFeedback:'Warten auf Rückmeldung',done:'Abgeschlossen'})[$json.body.newStatus] ?? $json.body.newStatus }}\n              </div>\n            </div>\n\n            <p style=\"font-size:15px;line-height:25px;\">\n              {{ ({triage:'Deine Anfrage wird aktuell geprüft.',toDo:'Dein Ticket wurde zur Bearbeitung eingeplant.',todo:'Dein Ticket wurde zur Bearbeitung eingeplant.',inProgress:'Wir arbeiten aktuell an deinem Anliegen.',awaitFeedback:'Dein Ticket wartet derzeit auf eine Rückmeldung.',done:'Die Bearbeitung deines Tickets wurde abgeschlossen.'})[$json.body.newStatus] ?? 'Der Bearbeitungsstatus deines Tickets wurde aktualisiert.' }}\n            </p>\n\n            <p style=\"font-size:14px;line-height:24px;color:#697789;margin-top:24px;\">\n              Bei Rückfragen kannst du dich auf deine Ticketnummer\n              <strong>#{{ $json.body.ticketId }}</strong>\n              beziehen.\n            </p>\n\n            <p style=\"font-size:15px;line-height:24px;margin-top:30px;\">\n              Viele Grüße<br>\n              <strong>Dein JOIN-Team</strong>\n            </p>\n\n          </td>\n        </tr>\n\n        <!-- FOOTER -->\n        <tr>\n          <td style=\"padding:22px 32px;border-top:2px solid #29abe2;color:#697789;\">\n\n            <div style=\"font-size:16px;font-weight:700;color:#2a3647;\">\n              JOIN<span style=\"color:#29abe2;\">.</span>\n              <span style=\"font-size:13px;font-weight:400;color:#697789;\">\n                | Kanban Board\n              </span>\n            </div>\n\n            <div style=\"font-size:12px;line-height:20px;margin-top:8px;\">\n              Automatische Ticket-Statusbenachrichtigung\n            </div>\n\n            <div style=\"font-size:12px;line-height:20px;\">\n              <a href=\"mailto:join@thorben-schreyer.de\"\n                style=\"color:#1689b9;text-decoration:none;\">\n                join@thorben-schreyer.de\n              </a>\n            </div>\n\n            <div style=\"font-size:12px;line-height:20px;\">\n              <a href=\"https://join.thorben-schreyer.de\"\n                style=\"color:#1689b9;text-decoration:none;\">\n                join.thorben-schreyer.de\n              </a>\n            </div>\n\n          </td>\n        </tr>\n\n      </table>\n    </td>\n  </tr>\n</table>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "1d5f1456-fc4b-462d-92cd-9da126f7eb56",
+      "name": "Send Email - Status Update",
+      "webhookId": "8209765e-e0fb-4090-9c83-efa55fd7c8f2",
+      "credentials": {
+        "smtp": {
+          "id": "SNpdKFrNLAKQtDQD",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "JOIN - Ticket Status Notification1": {
+      "main": [
+        [
+          {
+            "node": "Send Email - Status Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "ca75afc6-32fb-4a71-9cc1-f4276e341659",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "744941b242208b9e34a8098c7f36fed57763afe4c8892b86f64b77bda21c2f9e"
+  },
+  "nodeGroups": [],
+  "id": "JQ7iYjrgjdNigN56",
+  "tags": []
+}
