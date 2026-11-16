@@ -32,7 +32,7 @@ async function loadAiUsage() {
 
   try {
     const response = await fetch(
-      "http://localhost:5678/webhook/join-ai-usage",
+      "https://join-ki.app.n8n.cloud/webhook/join-ai-usage",
       {
         method: "GET",
         cache: "no-store",
@@ -199,7 +199,7 @@ async function sendRequest(event) {
     text: document.getElementById("request-text").value.trim(),
   };
 
-  const webhookUrl = "http://localhost:5678/webhook/contact-request";
+  const webhookUrl = "https://join-ki.app.n8n.cloud/webhook/contact-request";
 
   try {
     const response = await fetch(webhookUrl, {

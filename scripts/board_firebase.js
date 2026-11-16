@@ -44,7 +44,7 @@ async function updateFirebaseCategory(firebaseId, newCategory) {
   const result = await response.json();
 
   // 4. Notify n8n after successful update
-  const webhookUrl = "http://localhost:5678/webhook/join-ticket-status";
+  const webhookUrl = "https://join-ki.app.n8n.cloud/webhook/join-ticket-status";
 
   const payload = {
     firebaseId: firebaseId,
