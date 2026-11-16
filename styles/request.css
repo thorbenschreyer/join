@@ -8,16 +8,13 @@ body {
 #request-dialog {
   position: fixed;
   inset: 0;
-
   width: 100%;
   height: 100dvh;
   max-width: none;
   max-height: none;
-
   margin: 0;
   padding: 0;
   border: none;
-
   box-sizing: border-box;
   background-color: #293545;
   overflow-y: auto;
@@ -28,11 +25,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   min-height: 100%;
   width: 100%;
   box-sizing: border-box;
-
   padding: 24px 16px;
 }
 
@@ -41,17 +36,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: 100%;
   max-width: 780px;
   min-width: 0;
   height: auto;
   min-height: 400px;
-
   margin: auto 0 0;
   padding: 24px;
   box-sizing: border-box;
-
   background-color: white;
   border-radius: 30px;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.15);
@@ -62,7 +54,6 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 32px;
-
   margin-top: auto;
   padding-top: 24px;
 }
@@ -70,17 +61,13 @@ body {
 dialog {
   position: fixed;
   inset: 0;
-
   width: 100vw;
   height: 100dvh;
-
   max-width: none;
   max-height: none;
-
   margin: 0;
   padding: 0;
   border: none;
-
   box-sizing: border-box;
   background-color: #293545;
 }
@@ -90,7 +77,6 @@ dialog {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   height: 100%;
   min-width: 0;
@@ -112,7 +98,8 @@ body {
   margin: 0;
   padding: 0;
 }
-£ dialog::backdrop {
+
+dialog::backdrop {
   background: transparent;
 }
 
@@ -126,14 +113,11 @@ body {
   inset: 0;
   width: 100%;
   height: 100dvh;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: white;
   z-index: 9999;
-
   animation: fadeOut 1s ease-in-out forwards;
 }
 
@@ -163,7 +147,7 @@ body {
   height: 400px;
   background-color: rgb(255, 255, 255);
   border-radius: 30px;
-  box-shadow: 0 0 10 3;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.15);
   margin: 0px 8px;
 }
 
@@ -171,7 +155,6 @@ body {
   display: flex;
   justify-content: center;
   gap: 32px;
-
   margin-top: auto;
   padding: 24px 16px;
 }
@@ -244,7 +227,7 @@ button {
 .request-button:hover {
   background-color: rgba(23, 125, 168, 1);
   color: white;
-  box-shadow: 0 4 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .member-button {
@@ -252,7 +235,6 @@ button {
   border-radius: 8px;
   border: 1px solid rgba(42, 54, 71, 1);
   font-size: 23px;
-
   font-family: "Open-Sans-Light", sans-serif;
   cursor: pointer;
 }
@@ -267,7 +249,6 @@ button {
   display: flex;
   flex-direction: column;
   flex: 1;
-
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
@@ -284,12 +265,10 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   flex: 1;
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-
   margin: 0;
   padding: 0 16px;
 }
@@ -312,7 +291,7 @@ button {
   justify-content: center;
   font-family: "Open-Sans-Bold", sans-serif;
   color: rgba(42, 54, 71, 1);
-  font-size: 64;
+  font-size: 64px;
   font-weight: bold;
   width: 100%;
   margin-bottom: 64px;
@@ -403,7 +382,6 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   flex: 1;
   width: 100%;
   min-width: 0;
@@ -413,11 +391,9 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
   max-width: 600px;
   box-sizing: border-box;
-
   margin: 112px 16px 0;
   background-color: rgb(255, 255, 255);
   border-radius: 30px;
@@ -520,6 +496,10 @@ textarea {
   animation: slideInFromBottom 0.6s ease-out forwards;
 }
 
+.succses-request-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 @keyframes slideInFromBottom {
   from {
     transform: translateY(100vh);
@@ -530,10 +510,6 @@ textarea {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.succses-request-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .send_sucsess_img {
@@ -558,4 +534,76 @@ textarea {
   text-align: center;
   font-size: 24px;
   margin-right: 12px;
+}
+
+/* -----------------------------------------
+   AI REQUEST STATUS
+----------------------------------------- */
+
+#ai-status-wrapper {
+  width: 100%;
+  max-width: 960px;
+  min-width: 0;
+}
+
+#ai-status-content {
+  width: 100%;
+}
+
+.ai-pending {
+  visibility: hidden;
+}
+
+.ai-status-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 220px;
+  width: 100%;
+  color: #737373;
+}
+
+.ai-status-placeholder p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.ai-spinner {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #4589ff;
+  border-radius: 50%;
+  animation: ai-spin 0.8s linear infinite;
+}
+
+@keyframes ai-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#ai-status-placeholder[hidden],
+#ai-status-content[hidden],
+.ai-spinner[hidden] {
+  display: none !important;
+}
+
+#ai-status-content:not([hidden]) {
+  animation: ai-fade-in 0.25s ease-out;
+}
+
+@keyframes ai-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

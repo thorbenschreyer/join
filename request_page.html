@@ -3,78 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+
     <title>Join Kanban</title>
+
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styles/request.css" />
     <link rel="stylesheet" href="styles/request_mobile.css" />
     <link rel="stylesheet" href="styles/login.css" />
     <link rel="stylesheet" href="styles/login_resp.css" />
   </head>
-  <body onload="(getUserData(), setRequestText())">
+
+  <body onload="getUserData()">
     <img
       class="main-logo-request-page"
       src="./assets/icons/main_logo_dark.png"
       alt=""
     />
+
     <div class="request-page">
       <div class="welcome-container-card">
+        <!-- Desktop header -->
         <header class="request-header">
           <a href="./index.html">
             <img
               class="request-header-img"
               src="./assets/icons/back.svg"
-              alt=""
-          /></a>
-          <p id="request-color" class="number-of-requests-not-ok">
-            <span
-              ><b id="number-of-requests">0</b> of <b>10</b> requests used
-              today</span
-            >
+              alt="Back"
+            />
+          </a>
+
+          <p id="request-color" class="number-of-requests-not-ok ai-pending">
+            <span>
+              <b id="number-of-requests">0</b>
+              of <b>10</b> requests used today
+            </span>
           </p>
         </header>
+
+        <!-- Welcome heading -->
         <h1 class="request-h1">
           Welcome
+
           <a class="mobile-arrow-request" href="./index.html">
             <img
               class="request-header-img"
               src="./assets/icons/back.svg"
-              alt=""
-          /></a>
+              alt="Back"
+            />
+          </a>
         </h1>
+
+        <!-- Mobile header -->
         <header class="request-header-mobile">
-          <p id="request-color-mobile" class="number-of-requests-not-ok">
-            <span
-              ><b id="number-of-requests-mobile">0</b> of <b>10</b> requests
-              used today</span
-            >
+          <p
+            id="request-color-mobile"
+            class="number-of-requests-not-ok ai-pending"
+          >
+            <span>
+              <b id="number-of-requests-mobile">0</b>
+              of <b>10</b> requests used today
+            </span>
           </p>
         </header>
-        <div id="how-to-card" class="how-to-card">
-          <!-- Template Text -->
 
-          <!-- Template Text End -->
+        <!-- AI status section -->
+        <div id="ai-status-wrapper">
+          <!-- Loading state -->
+          <div
+            id="ai-status-placeholder"
+            class="ai-status-placeholder"
+            role="status"
+            aria-live="polite"
+          >
+            <span class="ai-spinner" aria-hidden="true"></span>
+
+            <p id="ai-loading-message">Checking request availability...</p>
+          </div>
+
+          <!-- Final content -->
+          <div id="ai-status-content" hidden>
+            <div id="how-to-card" class="how-to-card">
+              <!-- Template content is inserted by JavaScript -->
+            </div>
+          </div>
         </div>
+
+        <!-- Footer -->
         <div class="dialog-footer">
           <a
             onclick="noLoginToShow()"
             id="privacy-policy-link"
             class="privacy-and-legal-links"
             href="index.html?page=privacy"
-            >Privacy Policy</a
           >
+            Privacy Policy
+          </a>
+
           <a
             id="legal-notice-link"
             class="privacy-and-legal-links"
             href="index.html?page=legal"
-            >Legal notice</a
           >
+            Legal notice
+          </a>
         </div>
       </div>
     </div>
+
+    <script src="scripts/login.js" defer></script>
+    <script src="scripts/request.js" defer></script>
+    <script
+      src="templates/templatefunctions/templatefunctions.js"
+      defer
+    ></script>
+    <script src="script.js" defer></script>
   </body>
-  <script src="scripts/login.js" defer></script>
-  <script src="scripts/request.js" defer></script>
-  <script src="templates/templatefunctions/templatefunctions.js" defer></script>
-  <script src="script.js" defer></script>
 </html>
