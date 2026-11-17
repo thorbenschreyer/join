@@ -1,0 +1,126 @@
+{
+  "name": "Show Count in Joiin",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "join-ai-usage",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        -176,
+        16
+      ],
+      "id": "4cef3100-b77f-46ce-965c-45ec473895d1",
+      "name": "Webhook - AI Counter",
+      "webhookId": "d0c8d21f-0941-4818-a3f7-3a8bdb36bc5e"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "kTwRN2ij3go4RN9S",
+          "mode": "list",
+          "cachedResultName": "ai usage",
+          "cachedResultUrl": "/projects/Z4HfNMgkgUfPGw3Y/datatables/kTwRN2ij3go4RN9S"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "date",
+              "keyValue": "={{ $now.setZone('Europe/Berlin').toFormat('yyyy-MM-dd') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        16,
+        16
+      ],
+      "id": "99a91d28-fc77-413c-a031-b360d0b5d3bf",
+      "name": "Get row(s)1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        352,
+        16
+      ],
+      "id": "891e308c-df8c-40eb-bb57-64fe6d1229c4",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst rows = $input.all().map(item => item.json);\n\nconst today = $now\n  .setZone('Europe/Berlin')\n  .toFormat('yyyy-MM-dd');\n\nconst row = rows.find(item => {\n  if (!item.date) return false;\n\n  return String(item.date).slice(0, 10) === today;\n});\n\nconst limit = 10;\n\nconst used = Math.min(\n  Math.max(Number(row?.used ?? 0), 0),\n  limit\n);\n\nreturn [{\n  json: {\n    used,\n    limit,\n    remaining: limit - used\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        16
+      ],
+      "id": "74203c8e-e73a-4ed2-8f49-c7c8bb264fc9",
+      "name": "Code in JavaScript1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - AI Counter": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "61fbebf8-f420-4340-b4da-264fcf07b039",
+  "meta": {
+    "instanceId": "e6fe865679837c44ab9e41b46d7ba97850cee39ae85213422c6c9ef40e390e06"
+  },
+  "nodeGroups": [],
+  "id": "kQsLwFmsUDRRg6Au",
+  "tags": []
+}

@@ -10,10 +10,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        -1200,
-        -368
+        192,
+        304
       ],
-      "id": "533fb49a-f1aa-4d50-915f-93101d47cc06",
+      "id": "a50ca799-643a-4e55-b8ab-21b511f9ae62",
       "name": "Respond to Webhook"
     },
     {
@@ -21,10 +21,10 @@
         "operation": "get",
         "dataTableId": {
           "__rl": true,
-          "value": "futybZcwGvC7RB8g",
+          "value": "kTwRN2ij3go4RN9S",
           "mode": "list",
-          "cachedResultName": "ai_usage",
-          "cachedResultUrl": "/projects/wF6IESVthOw5eNsc/datatables/futybZcwGvC7RB8g"
+          "cachedResultName": "ai usage",
+          "cachedResultUrl": "/projects/Z4HfNMgkgUfPGw3Y/datatables/kTwRN2ij3go4RN9S"
         },
         "filters": {
           "conditions": [
@@ -38,10 +38,10 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -1072,
-        -368
+        320,
+        304
       ],
-      "id": "751069ae-6e09-429c-8bde-0e6bc2278c17",
+      "id": "1921903b-1ad2-4768-9655-447e65942f36",
       "name": "Get row(s)"
     },
     {
@@ -71,10 +71,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.4,
       "position": [
-        -640,
-        -384
+        752,
+        288
       ],
-      "id": "5e903bbb-9611-4493-8f58-2f3987c95fcd",
+      "id": "d6cda993-a123-47ce-94f0-8ae65e70a768",
       "name": "If"
     },
     {
@@ -82,15 +82,16 @@
         "operation": "update",
         "dataTableId": {
           "__rl": true,
-          "value": "futybZcwGvC7RB8g",
+          "value": "kTwRN2ij3go4RN9S",
           "mode": "list",
-          "cachedResultName": "ai_usage",
-          "cachedResultUrl": "/projects/wF6IESVthOw5eNsc/datatables/futybZcwGvC7RB8g"
+          "cachedResultName": "ai usage",
+          "cachedResultUrl": "/projects/Z4HfNMgkgUfPGw3Y/datatables/kTwRN2ij3go4RN9S"
         },
         "filters": {
           "conditions": [
             {
-              "keyValue": "={{ $json.id }}"
+              "keyName": "date",
+              "keyValue": "={{ $now.setZone(\"Europe/Berlin\").toFormat(\"yyyy-MM-dd\") }}"
             }
           ]
         },
@@ -140,10 +141,10 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -496,
-        -400
+        912,
+        272
       ],
-      "id": "9b40176a-e790-4de3-8233-0a45ba982cd4",
+      "id": "7898d346-84c5-4089-bd28-6d39150b3578",
       "name": "Update row(s)"
     },
     {
@@ -174,40 +175,30 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.4,
       "position": [
-        -944,
-        -368
+        448,
+        304
       ],
-      "id": "c9ca8ad4-47a6-452b-82b0-cdae7f5caa21",
+      "id": "20a2c12f-e472-4bdd-855e-a9ae98475fc5",
       "name": "If1"
     },
     {
       "parameters": {
         "dataTableId": {
           "__rl": true,
-          "value": "futybZcwGvC7RB8g",
+          "value": "kTwRN2ij3go4RN9S",
           "mode": "list",
-          "cachedResultName": "ai_usage",
-          "cachedResultUrl": "/projects/wF6IESVthOw5eNsc/datatables/futybZcwGvC7RB8g"
+          "cachedResultName": "ai usage",
+          "cachedResultUrl": "/projects/Z4HfNMgkgUfPGw3Y/datatables/kTwRN2ij3go4RN9S"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
             "date": "={{ $now.setZone(\"Europe/Berlin\").toFormat(\"yyyy-MM-dd\") }}",
-            "used": 0,
-            "limit": 10
+            "limit": 10,
+            "used": 0
           },
           "matchingColumns": [],
           "schema": [
-            {
-              "id": "date",
-              "displayName": "date",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "dateTime",
-              "readOnly": false,
-              "removed": false
-            },
             {
               "id": "used",
               "displayName": "used",
@@ -227,6 +218,16 @@
               "type": "number",
               "readOnly": false,
               "removed": false
+            },
+            {
+              "id": "date",
+              "displayName": "date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -237,10 +238,10 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -784,
-        -304
+        608,
+        368
       ],
-      "id": "7a952139-3b6f-4e4a-b97f-e36bbcf98563",
+      "id": "4a8b0e24-5792-47ce-8124-e713d7a3baea",
       "name": "Insert row"
     },
     {
@@ -326,10 +327,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.5,
       "position": [
-        240,
-        -272
+        1632,
+        400
       ],
-      "id": "43894d89-9e39-4175-94ae-39d851d21572",
+      "id": "12f67469-d984-475d-a397-21a3aa798a0d",
       "name": "Edit Fields",
       "alwaysOutputData": true
     },
@@ -339,7 +340,8 @@
           "__rl": true,
           "value": "models/gemini-3.6-flash",
           "mode": "list",
-          "cachedResultName": "Gemini 3.6 Flash"
+          "cachedResultName": "Gemini 3.6 Flash",
+          "cachedResultUrl": ""
         },
         "messages": {
           "values": [
@@ -355,16 +357,16 @@
       "type": "@n8n/n8n-nodes-langchain.googleGemini",
       "typeVersion": 1.2,
       "position": [
-        -80,
-        -400
+        1312,
+        272
       ],
-      "id": "b09d7f76-2e04-4071-9d24-bc152f48f172",
+      "id": "7312e25a-d30a-4a87-a792-33fbc5a564a6",
       "name": "Message a model",
       "retryOnFail": true,
       "waitBetweenTries": 2000,
       "credentials": {
         "googlePalmApi": {
-          "id": "HLaKElXxaLUXjgBg",
+          "id": "MXFDKEqPk8kDMnhz",
           "name": "Google Gemini(PaLM) Api account"
         }
       },
@@ -378,10 +380,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.5,
       "position": [
-        816,
-        -480
+        2208,
+        192
       ],
-      "id": "dcaf7672-fd4a-4060-ae50-7e7bb090f8e1",
+      "id": "63888326-a301-458c-ba2d-8b76f1140b8d",
       "name": "FireBase Get Tasks"
     },
     {
@@ -391,10 +393,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        240,
-        -496
+        1632,
+        176
       ],
-      "id": "92cf98c6-8b6a-4a3a-a382-9f79204d298f",
+      "id": "8ca58438-7387-476e-87b9-b5a22c686973",
       "name": "Parse to Json"
     },
     {
@@ -404,10 +406,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        992,
-        -480
+        2384,
+        192
       ],
-      "id": "6c990f96-2b04-49c9-b964-f99c9e55193d",
+      "id": "1bca5066-f05c-44ff-800b-8541044eea86",
       "name": "Code in JavaScript"
     },
     {
@@ -417,10 +419,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1168,
-        -480
+        2560,
+        192
       ],
-      "id": "091bcaed-a873-4833-a08c-9c1dc72fb39d",
+      "id": "63df3496-a4a3-4de1-94a1-f95d50d1c72c",
       "name": "Build Final Join Ticket."
     },
     {
@@ -477,10 +479,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.5,
       "position": [
-        384,
-        -496
+        1776,
+        176
       ],
-      "id": "8b3054ea-81eb-4552-92a1-35027c505805",
+      "id": "ac2c2540-e374-4a5d-99cd-a5ef5673299e",
       "name": "Gemini map to Json"
     },
     {
@@ -495,10 +497,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.5,
       "position": [
-        1360,
-        -480
+        2752,
+        192
       ],
-      "id": "40257e7d-9c22-4e97-b5f4-37ac5fd21040",
+      "id": "322d1648-bd8c-46e7-a36b-26bbe3df61cf",
       "name": "Build Final Join Ticket",
       "onError": "continueErrorOutput"
     },
@@ -507,27 +509,11 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        640,
-        -480
+        2032,
+        192
       ],
-      "id": "70b68f01-5f44-4deb-a1ec-539ad15a65fb",
+      "id": "e5307a84-5eb8-4cb5-a240-0ef1c07644fb",
       "name": "Merge"
-    },
-    {
-      "parameters": {
-        "path": "join-ai-usage",
-        "responseMode": "responseNode",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.2,
-      "position": [
-        -1392,
-        -544
-      ],
-      "id": "0dd23036-f498-4dc9-8e59-50aa2eb9a755",
-      "name": "Webhook - AI Counter",
-      "webhookId": "d0c8d21f-0941-4818-a3f7-3a8bdb36bc5e"
     },
     {
       "parameters": {
@@ -539,69 +525,12 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.2,
       "position": [
-        -1392,
-        -368
+        0,
+        304
       ],
-      "id": "09b51924-7e10-48ee-8c41-20f999388972",
+      "id": "c6215d53-bca5-47b5-8a09-b4f7daff5745",
       "name": "Webhook - Contact Form",
       "webhookId": "daee7ce1-bda9-48a9-97a6-159618df2d36"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "dataTableId": {
-          "__rl": true,
-          "value": "futybZcwGvC7RB8g",
-          "mode": "list",
-          "cachedResultName": "ai_usage",
-          "cachedResultUrl": "/projects/wF6IESVthOw5eNsc/datatables/futybZcwGvC7RB8g"
-        },
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "date",
-              "keyValue": "={{ $now.setZone('Europe/Berlin').toFormat('yyyy-MM-dd') }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.dataTable",
-      "typeVersion": 1.1,
-      "position": [
-        -1200,
-        -544
-      ],
-      "id": "1525cd54-f6ae-4ed1-933a-66524b09b463",
-      "name": "Get row(s)1",
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "respondWith": "json",
-        "responseBody": "={{ $json }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.respondToWebhook",
-      "typeVersion": 1.5,
-      "position": [
-        -864,
-        -544
-      ],
-      "id": "9fa25b0a-8b2b-4ef9-95e9-0c8a0e4cd7fc",
-      "name": "Respond to Webhook1"
-    },
-    {
-      "parameters": {
-        "jsCode": "\nconst rows = $input.all().map(item => item.json);\n\nconst today = $now\n  .setZone('Europe/Berlin')\n  .toFormat('yyyy-MM-dd');\n\nconst row = rows.find(item => {\n  if (!item.date) return false;\n\n  return String(item.date).slice(0, 10) === today;\n});\n\nconst limit = 10;\n\nconst used = Math.min(\n  Math.max(Number(row?.used ?? 0), 0),\n  limit\n);\n\nreturn [{\n  json: {\n    used,\n    limit,\n    remaining: limit - used\n  }\n}];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1040,
-        -544
-      ],
-      "id": "0bbcbdfb-cd9c-4bcb-b3e7-813d48d5c690",
-      "name": "Code in JavaScript1"
     },
     {
       "parameters": {
@@ -617,15 +546,15 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        1760,
-        -496
+        3152,
+        176
       ],
-      "id": "61d0b469-f48c-4234-a7ce-2acaaf380e8f",
+      "id": "17c4583b-78ef-44a1-896f-bb8763b32404",
       "name": "Send Email – Internal Notification.",
       "webhookId": "141f927f-56f1-4f92-9924-8aa4d611da8c",
       "credentials": {
         "smtp": {
-          "id": "SNpdKFrNLAKQtDQD",
+          "id": "jJCXGvnWCKGKsTEq",
           "name": "SMTP account"
         }
       }
@@ -644,15 +573,15 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        1760,
-        -672
+        3152,
+        0
       ],
-      "id": "11d769cb-91e7-4466-8807-dd8b2485edd3",
+      "id": "50ce5c47-7533-45db-9b78-ac582bc03fb3",
       "name": "Send Email – External",
       "webhookId": "141f927f-56f1-4f92-9924-8aa4d611da8c",
       "credentials": {
         "smtp": {
-          "id": "SNpdKFrNLAKQtDQD",
+          "id": "jJCXGvnWCKGKsTEq",
           "name": "SMTP account"
         }
       }
@@ -686,10 +615,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.5,
       "position": [
-        1536,
-        -192
+        2928,
+        480
       ],
-      "id": "8f177e4f-d533-4124-af13-924355c2881f",
+      "id": "3205ac8d-5e3d-401b-9468-88ce0674dad9",
       "name": "Prepare Firebase Error"
     },
     {
@@ -705,15 +634,15 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        1760,
-        -288
+        3152,
+        384
       ],
-      "id": "4c41d728-f3ba-4541-9d01-4b2fb966b3dd",
+      "id": "c2ff9f48-8679-4f5b-b459-1e8417e479d9",
       "name": "Send Email - Firebase Error.",
       "webhookId": "f622c7c3-25eb-4496-9f09-4f1389d3a8cd",
       "credentials": {
         "smtp": {
-          "id": "SNpdKFrNLAKQtDQD",
+          "id": "jJCXGvnWCKGKsTEq",
           "name": "SMTP account"
         }
       }
@@ -729,15 +658,15 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        1760,
-        -96
+        3152,
+        576
       ],
-      "id": "fb422ab7-5213-4ee7-832f-f5dc272651bb",
+      "id": "f82925d9-9187-47bb-8d94-949ee84ebaf8",
       "name": "Send Email - Customer Fallback",
       "webhookId": "81814e9e-1e38-4c9d-9d82-0358c48bcee8",
       "credentials": {
         "smtp": {
-          "id": "SNpdKFrNLAKQtDQD",
+          "id": "jJCXGvnWCKGKsTEq",
           "name": "SMTP account"
         }
       }
@@ -931,39 +860,6 @@
         ]
       ]
     },
-    "Webhook - AI Counter": {
-      "main": [
-        [
-          {
-            "node": "Get row(s)1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get row(s)1": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript1": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Build Final Join Ticket": {
       "main": [
         [
@@ -1002,11 +898,6 @@
           }
         ]
       ]
-    },
-    "Send Email - Firebase Error.": {
-      "main": [
-        []
-      ]
     }
   },
   "active": true,
@@ -1014,12 +905,12 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "8eabb67b-1221-4b59-b096-6f27f5e56b34",
+  "versionId": "fc1d1960-7704-4b27-8aa0-0d74cbec3251",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "744941b242208b9e34a8098c7f36fed57763afe4c8892b86f64b77bda21c2f9e"
+    "instanceId": "e6fe865679837c44ab9e41b46d7ba97850cee39ae85213422c6c9ef40e390e06"
   },
   "nodeGroups": [],
-  "id": "csKbQ16ZYwQ8TfVC",
+  "id": "lrju7K0lhfLyrnKB",
   "tags": []
 }

@@ -13,7 +13,7 @@
         0,
         0
       ],
-      "id": "a1383166-5714-4db7-a10f-80cdd13a262f",
+      "id": "b51033d4-7a11-4156-9aa0-e8c27bd88b56",
       "name": "JOIN - Ticket Status Notification1",
       "webhookId": "e21abf0e-6b23-4ce3-ad60-29a7c918d214"
     },
@@ -31,12 +31,12 @@
         224,
         0
       ],
-      "id": "1d5f1456-fc4b-462d-92cd-9da126f7eb56",
+      "id": "9ab20163-6525-45af-ac67-7802aacb2140",
       "name": "Send Email - Status Update",
       "webhookId": "8209765e-e0fb-4090-9c83-efa55fd7c8f2",
       "credentials": {
         "smtp": {
-          "id": "SNpdKFrNLAKQtDQD",
+          "id": "jJCXGvnWCKGKsTEq",
           "name": "SMTP account"
         }
       }
@@ -61,12 +61,12 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "ca75afc6-32fb-4a71-9cc1-f4276e341659",
+  "versionId": "74c10590-00a4-4a20-a355-790c82a30e84",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "744941b242208b9e34a8098c7f36fed57763afe4c8892b86f64b77bda21c2f9e"
+    "instanceId": "e6fe865679837c44ab9e41b46d7ba97850cee39ae85213422c6c9ef40e390e06"
   },
   "nodeGroups": [],
-  "id": "JQ7iYjrgjdNigN56",
+  "id": "IZgtXSpJjdrCnxiB",
   "tags": []
 }
